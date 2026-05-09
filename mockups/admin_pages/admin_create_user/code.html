@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ticketline Admin - Create User</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+</style>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "secondary-container": "#d5e3fc",
+          "on-surface-variant": "#434656",
+          "on-background": "#191b25",
+          "tertiary-container": "#bf3003",
+          "on-primary-container": "#dfe3ff",
+          "tertiary-fixed-dim": "#ffb4a1",
+          "inverse-primary": "#b7c4ff",
+          "surface-bright": "#fbf8ff",
+          "surface-container-high": "#e7e7f5",
+          "surface": "#fbf8ff",
+          "on-primary": "#ffffff",
+          "surface-dim": "#d9d9e7",
+          "secondary-fixed": "#d5e3fc",
+          "on-primary-fixed": "#001452",
+          "on-primary-fixed-variant": "#0038b6",
+          "inverse-surface": "#2e303a",
+          "primary-fixed-dim": "#b7c4ff",
+          "on-tertiary-fixed-variant": "#891e00",
+          "on-secondary-fixed-variant": "#3a485b",
+          "primary": "#003ec7",
+          "on-secondary": "#ffffff",
+          "tertiary": "#952200",
+          "secondary": "#515f74",
+          "outline-variant": "#c3c5d9",
+          "error-container": "#ffdad6",
+          "surface-container": "#ededfb",
+          "tertiary-fixed": "#ffdbd2",
+          "surface-container-low": "#f3f2ff",
+          "surface-container-highest": "#e1e1ef",
+          "secondary-fixed-dim": "#b9c7df",
+          "on-error-container": "#93000a",
+          "on-secondary-fixed": "#0d1c2e",
+          "on-tertiary-container": "#ffddd5",
+          "on-tertiary-fixed": "#3c0800",
+          "outline": "#737688",
+          "on-secondary-container": "#57657a",
+          "surface-variant": "#e1e1ef",
+          "on-tertiary": "#ffffff",
+          "on-surface": "#191b25",
+          "on-error": "#ffffff",
+          "primary-fixed": "#dde1ff",
+          "primary-container": "#0052ff",
+          "surface-container-lowest": "#ffffff",
+          "inverse-on-surface": "#f0effe",
+          "error": "#ba1a1a",
+          "surface-tint": "#004ced",
+          "background": "#fbf8ff"
+        },
+        borderRadius: {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        fontFamily: {
+          "headline": ["Manrope"],
+          "body": ["Inter"],
+          "label": ["Inter"]
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex selection:bg-primary selection:text-on-primary">
+
+<!-- Sidebar -->
+<nav class="bg-[#f3f2ff] text-[#003ec7] font-['Inter'] text-sm antialiased w-72 flex-col fixed left-0 top-0 flex flex-col h-full py-8 z-40">
+  <div class="px-8 mb-12">
+    <h1 class="font-['Manrope'] font-extrabold text-[#003ec7] text-2xl tracking-tight">Admin Console</h1>
+    <p class="text-[#191b25]/70 mt-1 text-xs uppercase tracking-widest font-semibold">System Oversight</p>
+  </div>
+  <ul class="flex flex-col gap-2 flex-1">
+    <li>
+      <a class="flex items-center gap-3 text-[#191b25]/70 hover:text-[#003ec7] px-8 py-3 hover:bg-white/50 transition-all duration-200" href="#">
+        <span class="material-symbols-outlined">dashboard</span>
+        Dashboard
+      </a>
+    </li>
+    <!-- Active: User Management -->
+    <li>
+      <a class="flex items-center gap-3 bg-white text-[#003ec7] font-bold rounded-l-full ml-4 pl-4 py-3 shadow-[0_4px_24px_-8px_rgba(25,27,37,0.08)] relative" href="#">
+        <div class="absolute right-0 top-0 bottom-0 w-2 bg-surface"></div>
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">admin_panel_settings</span>
+        User Management
+      </a>
+    </li>
+    <li>
+      <a class="flex items-center gap-3 text-[#191b25]/70 hover:text-[#003ec7] px-8 py-3 hover:bg-white/50 transition-all duration-200" href="#">
+        <span class="material-symbols-outlined">newspaper</span>
+        News
+      </a>
+    </li>
+    <li>
+      <a class="flex items-center gap-3 text-[#191b25]/70 hover:text-[#003ec7] px-8 py-3 hover:bg-white/50 transition-all duration-200" href="#">
+        <span class="material-symbols-outlined">event</span>
+        Events
+      </a>
+    </li>
+    <li>
+      <a class="flex items-center gap-3 text-[#191b25]/70 hover:text-[#003ec7] px-8 py-3 hover:bg-white/50 transition-all duration-200" href="#">
+        <span class="material-symbols-outlined">storefront</span>
+        Merchandise
+      </a>
+    </li>
+    <li>
+      <a class="flex items-center gap-3 text-[#191b25]/70 hover:text-[#003ec7] px-8 py-3 hover:bg-white/50 transition-all duration-200" href="#">
+        <span class="material-symbols-outlined">location_on</span>
+        Venues
+      </a>
+    </li>
+  </ul>
+  <div class="px-8 mt-auto">
+    <div class="flex items-center gap-3 bg-white rounded-xl p-3 shadow-[0_4px_12px_-4px_rgba(25,27,37,0.08)]">
+      <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline font-bold text-sm">A</div>
+      <div>
+        <p class="font-semibold text-on-surface text-sm">Admin</p>
+        <p class="text-on-surface-variant text-xs">admin@ticketline.at</p>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Canvas -->
+<main class="ml-72 flex-1 p-12 lg:p-16">
+
+  <!-- Breadcrumb -->
+  <div class="flex items-center gap-2 text-sm text-on-surface-variant mb-8">
+    <a href="#" class="hover:text-primary transition-colors">User Management</a>
+    <span class="material-symbols-outlined text-[1rem]">chevron_right</span>
+    <span class="text-on-surface font-medium">Create User</span>
+  </div>
+
+  <!-- Header -->
+  <header class="mb-10">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-[0.9rem]">person_add</span>
+        New User
+      </span>
+    </div>
+    <h2 class="font-headline text-5xl font-extrabold text-on-surface tracking-tight">Create User</h2>
+    <p class="text-on-surface-variant mt-3 text-lg max-w-xl">Add a new customer or administrator to the system. A password reset email will be sent automatically.</p>
+  </header>
+
+  <!-- Form -->
+  <div class="max-w-2xl">
+    <div class="bg-surface-container-lowest rounded-xl shadow-[0_8px_24px_-12px_rgba(25,27,37,0.06)] p-8 flex flex-col gap-8">
+
+      <!-- Role Selector -->
+      <div>
+        <p class="text-xs uppercase tracking-widest text-on-surface-variant/60 font-semibold mb-3">Role</p>
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Customer (selected) -->
+          <label class="flex items-center gap-4 p-4 rounded-xl border-2 border-primary bg-primary/5 cursor-pointer transition-all">
+            <input type="radio" name="role" value="customer" class="hidden" checked/>
+            <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary shrink-0">
+              <span class="material-symbols-outlined text-[1.2rem]">person</span>
+            </div>
+            <div>
+              <p class="font-semibold text-on-surface text-sm">Customer</p>
+              <p class="text-on-surface-variant text-xs mt-0.5">Can browse and buy tickets</p>
+            </div>
+            <span class="material-symbols-outlined text-primary ml-auto text-[1.2rem]" style="font-variation-settings:'FILL' 1">radio_button_checked</span>
+          </label>
+          <!-- Admin (unselected) -->
+          <label class="flex items-center gap-4 p-4 rounded-xl border-2 border-outline-variant bg-surface-container-low cursor-pointer hover:border-primary/40 transition-all">
+            <input type="radio" name="role" value="admin" class="hidden"/>
+            <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0">
+              <span class="material-symbols-outlined text-[1.2rem]">shield</span>
+            </div>
+            <div>
+              <p class="font-semibold text-on-surface text-sm">Administrator</p>
+              <p class="text-on-surface-variant text-xs mt-0.5">Full system access</p>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant/40 ml-auto text-[1.2rem]">radio_button_unchecked</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-outline-variant/30"></div>
+
+      <!-- Personal Info -->
+      <div>
+        <p class="text-xs uppercase tracking-widest text-on-surface-variant/60 font-semibold mb-4">Personal Information</p>
+        <div class="grid grid-cols-2 gap-4">
+          <!-- First Name -->
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-medium text-on-surface">First Name</label>
+            <input
+              type="text"
+              placeholder="e.g. Anna"
+              class="bg-surface-container-low border-none rounded-lg px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary transition-all"
+            />
+          </div>
+          <!-- Last Name -->
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-medium text-on-surface">Last Name</label>
+            <input
+              type="text"
+              placeholder="e.g. Kaufmann"
+              class="bg-surface-container-low border-none rounded-lg px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary transition-all"
+            />
+          </div>
+          <!-- Email (full width) -->
+          <div class="col-span-2 flex flex-col gap-1.5">
+            <label class="text-sm font-medium text-on-surface">Email Address</label>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 text-[1.1rem]">mail</span>
+              <input
+                type="email"
+                placeholder="e.g. anna.kaufmann@example.at"
+                class="w-full bg-surface-container-low border-none rounded-lg pl-11 pr-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary transition-all"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-outline-variant/30"></div>
+
+      <!-- Address -->
+      <div>
+        <p class="text-xs uppercase tracking-widest text-on-surface-variant/60 font-semibold mb-4">Address</p>
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Street (full width) -->
+          <div class="col-span-2 flex flex-col gap-1.5">
+            <label class="text-sm font-medium text-on-surface">Street & Number</label>
+            <input
+              type="text"
+              placeholder="e.g. Mariahilfer Straße 12"
+              class="bg-surface-container-low border-none rounded-lg px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary transition-all"
+            />
+          </div>
+          <!-- Postal Code -->
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-medium text-on-surface">Postal Code</label>
+            <input
+              type="text"
+              placeholder="e.g. 1060"
+              class="bg-surface-container-low border-none rounded-lg px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary transition-all"
+            />
+          </div>
+          <!-- City -->
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-medium text-on-surface">City</label>
+            <input
+              type="text"
+              placeholder="e.g. Wien"
+              class="bg-surface-container-low border-none rounded-lg px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary transition-all"
+            />
+          </div>
+          <!-- Country (full width) -->
+          <div class="col-span-2 flex flex-col gap-1.5">
+            <label class="text-sm font-medium text-on-surface">Country</label>
+            <div class="relative">
+              <select class="w-full appearance-none bg-surface-container-low border-none rounded-lg px-4 py-3 text-sm text-on-surface focus:ring-2 focus:ring-primary transition-all">
+                <option value="AT" selected>Austria</option>
+                <option value="DE">Germany</option>
+                <option value="CH">Switzerland</option>
+              </select>
+              <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 pointer-events-none text-[1.1rem]">expand_more</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Password Info Banner -->
+      <div class="flex items-start gap-3 bg-primary/5 border border-primary/20 rounded-xl p-4">
+        <span class="material-symbols-outlined text-primary text-[1.2rem] mt-0.5 shrink-0">info</span>
+        <p class="text-sm text-on-surface-variant">
+          No password is set here. The user will receive an <span class="font-semibold text-on-surface">email with a link to set their password</span> after the account is created.
+        </p>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex justify-between items-center pt-2">
+        <a href="#" class="flex items-center gap-2 text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">
+          <span class="material-symbols-outlined text-[1.1rem]">arrow_back</span>
+          Cancel
+        </a>
+        <button class="flex items-center gap-2 bg-primary text-on-primary font-semibold px-6 py-3 rounded-full shadow-[0_4px_12px_-4px_rgba(0,62,199,0.3)] hover:opacity-90 transition-opacity text-sm">
+          <span class="material-symbols-outlined text-[1.1rem]">person_add</span>
+          Create User & Send Email
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+</body>
+</html>

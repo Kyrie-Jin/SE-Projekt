@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ticketline – Buy Reserved Tickets</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          'secondary-container': '#d5e3fc', 'on-surface-variant': '#434656', 'on-background': '#191b25',
+          'tertiary-container': '#bf3003', 'on-primary-container': '#dfe3ff', 'tertiary-fixed-dim': '#ffb4a1',
+          'inverse-primary': '#b7c4ff', 'surface-bright': '#fbf8ff', 'surface-container-high': '#e7e7f5',
+          'surface': '#fbf8ff', 'on-primary': '#ffffff', 'surface-dim': '#d9d9e7',
+          'secondary-fixed': '#d5e3fc', 'on-primary-fixed': '#001452', 'on-primary-fixed-variant': '#0038b6',
+          'inverse-surface': '#2e303a', 'primary-fixed-dim': '#b7c4ff', 'on-tertiary-fixed-variant': '#891e00',
+          'on-secondary-fixed-variant': '#3a485b', 'primary': '#003ec7', 'on-secondary': '#ffffff',
+          'tertiary': '#952200', 'secondary': '#515f74', 'outline-variant': '#c3c5d9',
+          'error-container': '#ffdad6', 'surface-container': '#ededfb', 'tertiary-fixed': '#ffdbd2',
+          'surface-container-low': '#f3f2ff', 'surface-container-highest': '#e1e1ef',
+          'secondary-fixed-dim': '#b9c7df', 'on-error-container': '#93000a', 'on-secondary-fixed': '#0d1c2e',
+          'on-tertiary-container': '#ffddd5', 'on-tertiary-fixed': '#3c0800', 'outline': '#737688',
+          'on-secondary-container': '#57657a', 'surface-variant': '#e1e1ef', 'on-tertiary': '#ffffff',
+          'on-surface': '#191b25', 'on-error': '#ffffff', 'primary-fixed': '#dde1ff',
+          'primary-container': '#0052ff', 'surface-container-lowest': '#ffffff',
+          'inverse-on-surface': '#f0effe', 'error': '#ba1a1a', 'surface-tint': '#004ced', 'background': '#fbf8ff'
+        },
+        borderRadius: { 'DEFAULT': '0.125rem', 'lg': '0.25rem', 'xl': '0.5rem', 'full': '0.75rem' },
+        fontFamily: { 'headline': ['Manrope'], 'body': ['Inter'], 'label': ['Inter'] }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen relative">
+
+  <!-- Blurred background: actual reservations.html content -->
+  <div class="fixed inset-0 flex blur-sm pointer-events-none select-none overflow-hidden" aria-hidden="true">
+    <!-- Account Sidebar -->
+    <nav class="bg-[#f3f2ff] text-[#003ec7] font-['Inter'] text-sm antialiased w-64 flex-col fixed left-0 top-0 flex flex-col h-full py-8 z-40">
+      <div class="px-8 mb-10">
+        <h1 class="font-['Manrope'] font-extrabold text-[#003ec7] text-2xl tracking-tight">Ticketline</h1>
+        <div class="flex items-center gap-1.5 text-[#191b25]/50 text-xs font-medium mt-2 transition-colors">
+          <span class="material-symbols-outlined text-[0.9rem]">arrow_back</span>Back
+        </div>
+      </div>
+      <p class="px-8 text-[#191b25]/40 text-xs uppercase tracking-widest font-semibold mb-2">My Account</p>
+      <ul class="flex flex-col gap-1 flex-1">
+        <li>
+          <div class="flex items-center gap-3 text-[#191b25]/70 px-8 py-3">
+            <span class="material-symbols-outlined">manage_accounts</span>My Profile
+          </div>
+        </li>
+        <li>
+          <div class="flex items-center gap-3 bg-white text-[#003ec7] font-bold rounded-l-full ml-4 pl-4 py-3 shadow-[0_4px_24px_-8px_rgba(25,27,37,0.08)] relative">
+            <div class="absolute right-0 top-0 bottom-0 w-2 bg-surface"></div>
+            <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">receipt_long</span>My Orders
+          </div>
+        </li>
+        <li>
+          <div class="flex items-center gap-3 text-[#191b25]/70 px-8 py-3">
+            <span class="material-symbols-outlined">stars</span>My Rewards
+          </div>
+        </li>
+      </ul>
+      <div class="px-8 mt-auto flex flex-col gap-3">
+        <div class="flex items-center gap-3 bg-white rounded-xl p-3 shadow-[0_4px_12px_-4px_rgba(25,27,37,0.08)]">
+          <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline font-bold text-sm shrink-0">AK</div>
+          <div class="min-w-0">
+            <p class="font-semibold text-on-surface text-sm truncate">Anna Kowalski</p>
+            <p class="text-on-surface-variant text-xs truncate">anna.kowalski@example.com</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 text-[#191b25]/70 px-2 py-2 text-sm">
+          <span class="material-symbols-outlined">logout</span>Sign Out
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Canvas -->
+    <main class="ml-64 flex-1 p-12 lg:p-16">
+      <!-- Breadcrumb -->
+      <div class="flex items-center gap-2 text-sm text-on-surface-variant mb-8">
+        <span class="text-on-surface font-medium">My Account</span>
+        <span class="material-symbols-outlined text-[1rem]">chevron_right</span>
+        <span class="text-on-surface font-medium">My Orders</span>
+      </div>
+
+      <!-- Header -->
+      <header class="mb-10">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[0.9rem]">receipt_long</span>Orders
+          </span>
+        </div>
+        <h2 class="font-headline text-5xl font-extrabold text-on-surface tracking-tight">My Orders</h2>
+        <p class="text-on-surface-variant mt-3 text-lg max-w-xl">View all your purchased tickets, reservations, and past orders.</p>
+      </header>
+
+      <!-- Tabs -->
+      <div class="flex items-center gap-2 mb-8 border-b border-outline-variant/40 pb-0">
+        <div class="flex items-center gap-2 px-4 py-3 text-sm font-medium text-on-surface-variant border-b-2 border-transparent -mb-px transition-colors hover:text-on-surface">
+          <span class="material-symbols-outlined text-[1rem]">upcoming</span>
+          Upcoming
+          <span class="bg-surface-container-high text-on-surface-variant text-xs font-bold px-2 py-0.5 rounded-full">2</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-primary border-b-2 border-primary -mb-px transition-colors">
+          <span class="material-symbols-outlined text-[1rem]">bookmark</span>
+          Reservations
+          <span class="bg-primary text-on-primary text-xs font-bold px-2 py-0.5 rounded-full">1</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-3 text-sm font-medium text-on-surface-variant border-b-2 border-transparent -mb-px transition-colors hover:text-on-surface">
+          <span class="material-symbols-outlined text-[1rem]">history</span>
+          Past
+        </div>
+      </div>
+
+      <div class="max-w-3xl flex flex-col gap-4">
+        <!-- Reservation Card -->
+        <div class="bg-surface-container-lowest rounded-xl shadow-[0_4px_16px_-8px_rgba(25,27,37,0.06)] p-6 mb-4 border border-amber-200/60">
+          <div class="flex items-start justify-between gap-4">
+            <div class="w-16 h-16 rounded-xl bg-amber-50 flex flex-col items-center justify-center shrink-0">
+              <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">APR</span>
+              <span class="text-2xl font-extrabold font-headline text-amber-600 leading-none">30</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-medium text-amber-700 bg-amber-100 px-2.5 py-0.5 rounded-full">Reserved</span>
+                <span class="text-xs text-on-surface-variant font-mono">RES-7821</span>
+              </div>
+              <h3 class="font-headline font-bold text-on-surface text-base">Jazz Fest Wien 2026 – Opening Night</h3>
+              <p class="text-xs text-on-surface-variant mt-0.5 flex items-center gap-1">
+                <span class="material-symbols-outlined text-[0.85rem]">location_on</span>Wiener Konzerthaus · Thu, 30 Apr 2026 · 20:00
+              </p>
+              <p class="text-xs text-on-surface-variant mt-1.5">2 tickets · Standing Area</p>
+            </div>
+            <div class="text-right shrink-0">
+              <p class="font-headline font-bold text-lg text-on-surface">€50.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal Overlay -->
+  <div class="fixed inset-0 bg-on-surface/30 backdrop-blur-[2px] z-50 flex items-center justify-center p-4">
+    <div class="bg-surface-container-lowest rounded-xl shadow-[0_24px_64px_-16px_rgba(25,27,37,0.18)] w-full max-w-md p-8 flex flex-col gap-5">
+
+      <!-- Icon + Title -->
+      <div class="flex flex-col items-center text-center gap-2">
+        <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+          <span class="material-symbols-outlined text-primary text-[1.8rem]" style="font-variation-settings:'FILL' 1">shopping_cart</span>
+        </div>
+        <div>
+          <h2 class="font-headline font-bold text-xl text-on-surface">Buy Reserved Tickets</h2>
+          <p class="text-on-surface-variant text-sm mt-1 leading-relaxed">Select which reserved seats you'd like to purchase.</p>
+        </div>
+      </div>
+
+      <!-- Reservation info -->
+      <div class="bg-surface-container-low rounded-lg px-4 py-3 flex items-center justify-between text-sm">
+        <div>
+          <p class="font-medium text-on-surface">Jazz Fest Wien 2026 – Opening Night</p>
+          <p class="text-xs text-on-surface-variant mt-0.5">Thu, 30 Apr 2026 · 20:00 · Wiener Konzerthaus</p>
+        </div>
+        <span class="text-xs font-mono font-bold text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full shrink-0 ml-3">RES-7821</span>
+      </div>
+
+      <!-- Ticket selection -->
+      <div class="flex flex-col gap-2">
+        <p class="text-xs uppercase tracking-widest text-on-surface-variant/50 font-semibold">Select Tickets to Purchase</p>
+        <!-- Ticket 1 (checked) -->
+        <label class="flex items-center gap-3 p-4 rounded-xl border border-primary/30 bg-primary/5 cursor-pointer hover:bg-primary/8 transition-colors">
+          <input type="checkbox" checked class="w-4 h-4 rounded accent-primary shrink-0"/>
+          <div class="flex-1">
+            <p class="text-sm font-medium text-on-surface">Standing Area · Ticket 1</p>
+            <p class="text-xs text-on-surface-variant mt-0.5">General Admission</p>
+          </div>
+          <span class="text-sm font-semibold text-on-surface">€25</span>
+        </label>
+        <!-- Ticket 2 (checked) -->
+        <label class="flex items-center gap-3 p-4 rounded-xl border border-primary/30 bg-primary/5 cursor-pointer hover:bg-primary/8 transition-colors">
+          <input type="checkbox" checked class="w-4 h-4 rounded accent-primary shrink-0"/>
+          <div class="flex-1">
+            <p class="text-sm font-medium text-on-surface">Standing Area · Ticket 2</p>
+            <p class="text-xs text-on-surface-variant mt-0.5">General Admission</p>
+          </div>
+          <span class="text-sm font-semibold text-on-surface">€25</span>
+        </label>
+      </div>
+
+      <!-- Note about partial purchase -->
+      <div class="bg-surface-container rounded-lg px-4 py-3 flex items-start gap-2">
+        <span class="material-symbols-outlined text-on-surface-variant/60 text-[1rem] mt-0.5 shrink-0">info</span>
+        <p class="text-xs text-on-surface-variant leading-relaxed">You can buy some or all reserved tickets. Unchecked tickets will be released back for others to purchase.</p>
+      </div>
+
+      <!-- Subtotal -->
+      <div class="border-t border-outline-variant/40 pt-3">
+        <div class="flex items-baseline justify-between">
+          <span class="text-sm text-on-surface-variant">2 tickets selected</span>
+          <span class="font-headline font-extrabold text-2xl text-on-surface">€50.00</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <button class="flex-1 py-3 rounded-full text-sm font-medium text-on-surface-variant border border-outline-variant hover:bg-surface-container-low transition-colors">
+          Cancel
+        </button>
+        <button class="flex-1 flex items-center justify-center gap-2 bg-primary text-on-primary font-semibold py-3 rounded-full text-sm hover:opacity-90 transition-opacity shadow-[0_4px_12px_-4px_rgba(0,62,199,0.3)]">
+          <span class="material-symbols-outlined text-[1rem]">shopping_cart</span>
+          Buy Selected
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="light" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ticketline – Stornorechnung</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          'secondary-container': '#d5e3fc', 'on-surface-variant': '#434656', 'on-background': '#191b25',
+          'tertiary-container': '#bf3003', 'on-primary-container': '#dfe3ff', 'tertiary-fixed-dim': '#ffb4a1',
+          'inverse-primary': '#b7c4ff', 'surface-bright': '#fbf8ff', 'surface-container-high': '#e7e7f5',
+          'surface': '#fbf8ff', 'on-primary': '#ffffff', 'surface-dim': '#d9d9e7',
+          'secondary-fixed': '#d5e3fc', 'on-primary-fixed': '#001452', 'on-primary-fixed-variant': '#0038b6',
+          'inverse-surface': '#2e303a', 'primary-fixed-dim': '#b7c4ff', 'on-tertiary-fixed-variant': '#891e00',
+          'on-secondary-fixed-variant': '#3a485b', 'primary': '#003ec7', 'on-secondary': '#ffffff',
+          'tertiary': '#952200', 'secondary': '#515f74', 'outline-variant': '#c3c5d9',
+          'error-container': '#ffdad6', 'surface-container': '#ededfb', 'tertiary-fixed': '#ffdbd2',
+          'surface-container-low': '#f3f2ff', 'surface-container-highest': '#e1e1ef',
+          'secondary-fixed-dim': '#b9c7df', 'on-error-container': '#93000a', 'on-secondary-fixed': '#0d1c2e',
+          'on-tertiary-container': '#ffddd5', 'on-tertiary-fixed': '#3c0800', 'outline': '#737688',
+          'on-secondary-container': '#57657a', 'surface-variant': '#e1e1ef', 'on-tertiary': '#ffffff',
+          'on-surface': '#191b25', 'on-error': '#ffffff', 'primary-fixed': '#dde1ff',
+          'primary-container': '#0052ff', 'surface-container-lowest': '#ffffff',
+          'inverse-on-surface': '#f0effe', 'error': '#ba1a1a', 'surface-tint': '#004ced', 'background': '#fbf8ff'
+        },
+        borderRadius: { 'DEFAULT': '0.125rem', 'lg': '0.25rem', 'xl': '0.5rem', 'full': '0.75rem' },
+        fontFamily: { 'headline': ['Manrope'], 'body': ['Inter'], 'label': ['Inter'] }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+  @media print {
+    .no-print { display: none !important; }
+    body { background: white !important; }
+    .invoice-paper { box-shadow: none !important; border: none !important; margin: 0 !important; max-width: 100% !important; }
+    .page-wrap { padding: 0 !important; }
+  }
+</style>
+</head>
+<body class="bg-[#f5f4fc] text-on-surface font-body min-h-screen">
+
+  <!-- Top Navigation Bar -->
+  <nav class="bg-white border-b border-outline-variant/40 sticky top-0 z-40 no-print">
+    <div class="max-w-[1400px] mx-auto px-8 h-16 flex items-center justify-between">
+      <a href="#" class="font-headline font-extrabold text-primary text-xl tracking-tight">Ticketline</a>
+      <div class="flex items-center gap-1">
+        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined text-[1rem]">newspaper</span>News
+        </a>
+        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined text-[1rem]">event</span>Events
+        </a>
+        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-primary bg-primary/8">
+          <span class="material-symbols-outlined text-[1rem]" style="font-variation-settings:'FILL' 1">confirmation_number</span>Tickets
+        </a>
+        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined text-[1rem]">storefront</span>Shop
+        </a>
+        <div class="ml-2 w-px h-5 bg-outline-variant"></div>
+        <a href="#" class="ml-2 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined text-[1rem]">person</span>Anna K.
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Toolbar -->
+  <div class="no-print bg-white border-b border-outline-variant/30">
+    <div class="max-w-3xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-1.5 text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">
+        <span class="material-symbols-outlined text-[1.1rem]">arrow_back</span>
+        Meine Bestellungen
+      </a>
+      <div class="flex items-center gap-2">
+        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border border-outline-variant text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined text-[1rem]">print</span>
+          Drucken
+        </a>
+        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-primary text-on-primary hover:bg-primary/90 transition-colors">
+          <span class="material-symbols-outlined text-[1rem]">download</span>
+          PDF herunterladen
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Wrap -->
+  <div class="page-wrap max-w-3xl mx-auto px-6 py-10">
+
+    <!-- Storno Notice Banner -->
+    <div class="no-print mb-5 flex items-start gap-3 bg-[#ffdad6] border border-[#ba1a1a]/20 rounded-xl px-5 py-4">
+      <span class="material-symbols-outlined text-[#ba1a1a] text-xl mt-0.5" style="font-variation-settings:'FILL' 1">cancel</span>
+      <div>
+        <p class="font-semibold text-[#93000a] text-sm">Dies ist eine Stornorechnung</p>
+        <p class="text-[#93000a]/80 text-xs mt-0.5">Die ursprüngliche Rechnung Nr. <strong>2024-09-0042</strong> wurde storniert. Der Gesamtbetrag wird auf Ihre ursprüngliche Zahlungsmethode rückerstattet.</p>
+      </div>
+    </div>
+
+    <!-- Invoice Paper -->
+    <div class="invoice-paper bg-white rounded-2xl shadow-[0_4px_32px_-8px_rgba(25,27,37,0.10)] overflow-hidden">
+
+      <!-- Invoice Header Band (red for Storno) -->
+      <div class="bg-[#952200] px-10 py-8 flex items-start justify-between">
+        <div>
+          <span class="font-headline font-extrabold text-2xl text-white tracking-tight">Ticketline</span>
+          <p class="text-white/70 text-xs mt-1">Ihr Ticketing-Partner in Österreich</p>
+        </div>
+        <div class="text-right">
+          <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full">STORNORECHNUNG</span>
+          <p class="text-white font-headline font-bold text-lg mt-2">Nr. 2024-09-0042-S</p>
+          <p class="text-white/70 text-xs mt-0.5">Zu Rechnung: 2024-09-0042</p>
+        </div>
+      </div>
+
+      <!-- Storno stripe (print-visible) -->
+      <div class="bg-[#ffdad6] border-b border-[#ba1a1a]/20 px-10 py-3 flex items-center gap-2">
+        <span class="material-symbols-outlined text-[#ba1a1a] text-base" style="font-variation-settings:'FILL' 1">cancel</span>
+        <p class="text-[#93000a] text-sm font-semibold">Stornierung der Rechnung 2024-09-0042 vom 22. April 2026</p>
+      </div>
+
+      <!-- Invoice Body -->
+      <div class="px-10 py-8 space-y-8">
+
+        <!-- Sender / Recipient Row -->
+        <div class="grid grid-cols-2 gap-8">
+          <div>
+            <p class="text-[0.65rem] font-semibold text-on-surface-variant uppercase tracking-widest mb-2">Rechnungsaussteller</p>
+            <p class="font-semibold text-on-surface text-sm">Ticketline GmbH</p>
+            <p class="text-sm text-on-surface-variant mt-0.5">Mariahilfer Straße 88</p>
+            <p class="text-sm text-on-surface-variant">1070 Wien, Österreich</p>
+            <p class="text-sm text-on-surface-variant mt-2">UID: ATU12345678</p>
+            <p class="text-sm text-on-surface-variant">FN 123456a HG Wien</p>
+            <p class="text-sm text-on-surface-variant mt-2">Tel: +43 1 234 5678</p>
+            <p class="text-sm text-on-surface-variant">office@ticketline.at</p>
+          </div>
+          <div>
+            <p class="text-[0.65rem] font-semibold text-on-surface-variant uppercase tracking-widest mb-2">Rechnungsempfänger</p>
+            <p class="font-semibold text-on-surface text-sm">Anna Kowalski</p>
+            <p class="text-sm text-on-surface-variant mt-0.5">Ringstraße 12/4</p>
+            <p class="text-sm text-on-surface-variant">1010 Wien, Österreich</p>
+            <p class="text-sm text-on-surface-variant mt-2">anna.kowalski@email.com</p>
+            <p class="text-sm text-on-surface-variant">Kundennr.: KD-00831</p>
+          </div>
+        </div>
+
+        <!-- Invoice Metadata -->
+        <div class="bg-surface-container-low rounded-xl px-6 py-4 grid grid-cols-3 gap-4">
+          <div>
+            <p class="text-[0.65rem] font-semibold text-on-surface-variant uppercase tracking-widest mb-1">Stornodatum</p>
+            <p class="text-sm font-semibold text-on-surface">22. April 2026</p>
+          </div>
+          <div>
+            <p class="text-[0.65rem] font-semibold text-on-surface-variant uppercase tracking-widest mb-1">Urspr. Rechnungsdatum</p>
+            <p class="text-sm font-semibold text-on-surface">22. April 2026</p>
+          </div>
+          <div>
+            <p class="text-[0.65rem] font-semibold text-on-surface-variant uppercase tracking-widest mb-1">Stornierungsgrund</p>
+            <p class="text-sm font-semibold text-on-surface">Kundenstornierung</p>
+          </div>
+        </div>
+
+        <!-- Line Items Table (negative amounts) -->
+        <div>
+          <p class="text-[0.65rem] font-semibold text-on-surface-variant uppercase tracking-widest mb-3">Stornierte Leistungen</p>
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-outline-variant">
+                <th class="text-left pb-2 font-semibold text-on-surface-variant text-xs">Beschreibung</th>
+                <th class="text-center pb-2 font-semibold text-on-surface-variant text-xs w-16">Menge</th>
+                <th class="text-right pb-2 font-semibold text-on-surface-variant text-xs w-24">Einzelpreis</th>
+                <th class="text-right pb-2 font-semibold text-on-surface-variant text-xs w-24">Gesamt</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-outline-variant/40">
+              <tr>
+                <td class="py-3">
+                  <p class="font-medium text-on-surface">Ticket – Wiener Philharmoniker</p>
+                  <p class="text-xs text-on-surface-variant mt-0.5">30.05.2026, 19:30 Uhr · Musikverein Wien · Kat. A · Reihe B, Platz 5</p>
+                  <p class="text-xs text-[#952200] mt-0.5">Storno gem. Rechnung 2024-09-0042</p>
+                </td>
+                <td class="py-3 text-center text-on-surface">–1</td>
+                <td class="py-3 text-right text-on-surface">€ 95,00</td>
+                <td class="py-3 text-right font-medium text-[#952200]">– € 95,00</td>
+              </tr>
+              <tr>
+                <td class="py-3">
+                  <p class="font-medium text-on-surface">Ticket – Wiener Philharmoniker</p>
+                  <p class="text-xs text-on-surface-variant mt-0.5">30.05.2026, 19:30 Uhr · Musikverein Wien · Kat. A · Reihe B, Platz 6</p>
+                  <p class="text-xs text-[#952200] mt-0.5">Storno gem. Rechnung 2024-09-0042</p>
+                </td>
+                <td class="py-3 text-center text-on-surface">–1</td>
+                <td class="py-3 text-right text-on-surface">€ 95,00</td>
+                <td class="py-3 text-right font-medium text-[#952200]">– € 95,00</td>
+              </tr>
+              <tr>
+                <td class="py-3">
+                  <p class="font-medium text-on-surface">Servicegebühr</p>
+                  <p class="text-xs text-on-surface-variant mt-0.5">Online-Bearbeitungsgebühr (nicht rückerstattungsfähig)</p>
+                </td>
+                <td class="py-3 text-center text-on-surface">–1</td>
+                <td class="py-3 text-right text-on-surface">€ 6,66</td>
+                <td class="py-3 text-right font-medium text-on-surface-variant line-through">€ 6,66</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-xs text-on-surface-variant mt-2 italic">* Die Servicegebühr wird gemäß den AGB nicht rückerstattet.</p>
+        </div>
+
+        <!-- Totals (negative) -->
+        <div class="ml-auto w-72 space-y-2">
+          <div class="flex justify-between text-sm text-on-surface-variant">
+            <span>Nettobetrag (storniert)</span>
+            <span class="text-[#952200]">– € 154,10</span>
+          </div>
+          <div class="flex justify-between text-sm text-on-surface-variant">
+            <span>Umsatzsteuer 13 % (Tickets)</span>
+            <span class="text-[#952200]">– € 24,33</span>
+          </div>
+          <div class="h-px bg-outline-variant my-1"></div>
+          <div class="flex justify-between font-headline font-bold text-base text-on-surface">
+            <span>Rückerstattungsbetrag</span>
+            <span class="text-[#952200]">– € 178,43</span>
+          </div>
+          <div class="flex justify-between text-xs text-on-surface-variant">
+            <span>inkl. gesetzlicher MwSt. (ohne Servicegebühr)</span>
+          </div>
+        </div>
+
+        <!-- Refund Info -->
+        <div class="bg-[#ccfbf1] border border-[#5eead4]/50 rounded-xl px-6 py-4">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="material-symbols-outlined text-[#0f766e]" style="font-variation-settings:'FILL' 1">payments</span>
+            <p class="text-[0.65rem] font-semibold text-[#0f766e] uppercase tracking-widest">Rückerstattung</p>
+          </div>
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <p class="text-[#0f766e]/70 text-xs mb-0.5">Rückerstattungsart</p>
+              <p class="font-medium text-[#0d4f47]">Kreditkarte (Visa ···· 4242)</p>
+            </div>
+            <div>
+              <p class="text-[#0f766e]/70 text-xs mb-0.5">Erwartete Gutschrift</p>
+              <p class="font-medium text-[#0d4f47]">3–5 Werktage</p>
+            </div>
+            <div>
+              <p class="text-[#0f766e]/70 text-xs mb-0.5">Rückerstattungsbetrag</p>
+              <p class="font-bold text-[#0d4f47]">€ 178,43</p>
+            </div>
+            <div>
+              <p class="text-[#0f766e]/70 text-xs mb-0.5">Nicht erstattet (Servicegebühr)</p>
+              <p class="font-medium text-[#0d4f47]">€ 6,66</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Legal Note -->
+        <div class="border-t border-outline-variant pt-6">
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Diese Stornorechnung hebt die Rechnung Nr. 2024-09-0042 vom 22.04.2026 vollständig auf und wurde gemäß § 11 UStG (österreichisches Umsatzsteuergesetz) ausgestellt. Eine Berichtigung des Vorsteuerabzuges ist durch den Rechnungsempfänger vorzunehmen. Ticketline GmbH ist im Firmenbuch des Handelsgerichts Wien unter FN 123456a eingetragen. Gerichtsstand: Wien. Für Rückfragen wenden Sie sich bitte an <span class="text-primary">office@ticketline.at</span> oder unter Tel. +43 1 234 5678, Mo–Fr 09:00–17:00 Uhr.
+          </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="border-t border-outline-variant pt-4 flex items-center justify-between">
+          <p class="text-xs text-on-surface-variant">Stornorechnung Nr.: <span class="font-semibold">2024-09-0042-S</span></p>
+          <p class="text-xs text-on-surface-variant">Seite 1 von 1</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom actions (non-print) -->
+    <div class="no-print mt-6 flex justify-center gap-3">
+      <a href="#" class="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium border border-outline-variant text-on-surface-variant hover:bg-white transition-colors">
+        <span class="material-symbols-outlined text-[1rem]">arrow_back</span>
+        Zurück zu Bestellungen
+      </a>
+      <a href="#" class="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-primary text-on-primary hover:bg-primary/90 transition-colors">
+        <span class="material-symbols-outlined text-[1rem]">download</span>
+        PDF herunterladen
+      </a>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Registration | Ticketline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed": "#0d1c2e",
+                        "surface-dim": "#d9d9e7",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "on-tertiary-fixed-variant": "#891e00",
+                        "surface-container-highest": "#e1e1ef",
+                        "on-tertiary-fixed": "#3c0800",
+                        "on-primary-container": "#dfe3ff",
+                        "outline-variant": "#c3c5d9",
+                        "on-primary-fixed": "#001452",
+                        "tertiary-fixed": "#ffdbd2",
+                        "tertiary-fixed-dim": "#ffb4a1",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#e7e7f5",
+                        "surface-container": "#ededfb",
+                        "primary": "#003ec7",
+                        "inverse-on-surface": "#f0effe",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#0038b6",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#bf3003",
+                        "primary-container": "#0052ff",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary": "#515f74",
+                        "inverse-primary": "#b7c4ff",
+                        "secondary-fixed": "#d5e3fc",
+                        "surface-tint": "#004ced",
+                        "primary-fixed": "#dde1ff",
+                        "secondary-container": "#d5e3fc",
+                        "outline": "#737688",
+                        "on-surface-variant": "#434656",
+                        "tertiary": "#952200",
+                        "surface-variant": "#e1e1ef",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#fbf8ff",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2e303a",
+                        "on-surface": "#191b25",
+                        "on-tertiary-container": "#ffddd5",
+                        "surface": "#fbf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fbf8ff",
+                        "surface-container-low": "#f3f2ff",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "on-secondary-container": "#57657a",
+                        "on-background": "#191b25"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-primary/20 selection:text-primary min-h-screen flex flex-col">
+<main class="flex-1 flex w-full">
+<div class="flex w-full max-w-[1920px] mx-auto bg-surface-container-lowest lg:bg-transparent">
+<!-- Left Side: Editorial Branding Anchor -->
+<div class="hidden lg:flex w-1/2 relative flex-col justify-between p-16 xl:p-24 overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-surface/40 via-surface/10 to-surface-container-lowest z-10"></div>
+<img alt="" class="w-full h-full object-cover object-center opacity-80" data-alt="vibrant abstract motion blur of a concert crowd with dynamic blue and purple stage lighting creating a sense of energy and live experience" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiX0c-9XBj1K0n2eskkwLFi-xwj4ndPjyus7xDvQvHGJgVNnJBUgmP-V0pgTZgWDAysC6bkMAXd2ozYjM3H3CkUS8b7mtU0_-l2HtLX4z5ns8WrffU4s698GT6jTNLFYpx6LwOg3I4dWFqkPiACbPx9pVjJMDbvqOAZJGps8SS1G99WUQqDUnOfD4Sc4pIr7l2CWtbaRr15KoIvty07retAVkO5PTBymm69UVfGI7E8K7igvYVQ4VGiKjSYG1R703DtqRSa7x2seGR"/>
+</div>
+<!-- Content Layer -->
+<div class="relative z-20 flex flex-col h-full justify-between">
+<!-- Brand Identity -->
+<div>
+<span class="font-headline font-black text-3xl tracking-tighter text-primary">Ticketline</span>
+</div>
+<!-- Editorial Statement -->
+<div class="max-w-xl space-y-6">
+<h1 class="font-headline font-bold text-5xl xl:text-6xl text-on-surface leading-[1.1] tracking-tight">
+                            The Precision<br/>Curator of Live<br/>Experiences.
+                        </h1>
+<p class="font-body text-lg text-on-surface-variant max-w-md leading-relaxed">
+                            Join Ticketline to unlock exclusive access, seamless logistics, and curated events designed for the discerning attendee.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Right Side: The Functional Canvas -->
+<div class="w-full lg:w-1/2 flex items-center justify-center p-8 sm:p-12 lg:p-16 bg-surface-container-lowest relative z-10 lg:shadow-[-24px_0_48px_-12px_rgba(25,27,37,0.05)] overflow-y-auto">
+<div class="w-full max-w-md space-y-8 py-8">
+<!-- Mobile Brand Anchor -->
+<div class="lg:hidden text-center sm:text-left">
+<span class="font-headline font-black text-2xl tracking-tighter text-primary">Ticketline</span>
+</div>
+<!-- Section Header -->
+<div class="space-y-3">
+<h2 class="font-headline font-bold text-3xl sm:text-4xl text-on-surface tracking-tight">Create Account</h2>
+<p class="font-body text-on-surface-variant">Please fill in the details below to get started.</p>
+</div>
+<!-- Registration Form -->
+<form class="space-y-6">
+<!-- Full Name -->
+<div class="flex flex-col gap-2">
+<label class="font-label text-sm font-medium text-on-surface px-1" for="fullName">Full Name</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 group-focus-within:text-primary transition-colors text-[20px]">person</span>
+<input class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/40 pl-12 pr-4 py-4 rounded-t-DEFAULT border-b-2 border-transparent focus:border-primary outline-none font-body transition-colors" id="fullName" name="fullName" placeholder="e.g. Jane Doe" required="" type="text"/>
+</div>
+</div>
+<!-- Email Address -->
+<div class="flex flex-col gap-2">
+<label class="font-label text-sm font-medium text-on-surface px-1" for="email">Email Address</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 group-focus-within:text-primary transition-colors text-[20px]">mail</span>
+<input class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/40 pl-12 pr-4 py-4 rounded-t-DEFAULT border-b-2 border-transparent focus:border-primary outline-none font-body transition-colors" id="email" name="email" placeholder="jane@example.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="flex flex-col gap-2">
+<label class="font-label text-sm font-medium text-on-surface px-1" for="password">Password</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 group-focus-within:text-primary transition-colors text-[20px]">lock</span>
+<input class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/40 pl-12 pr-12 py-4 rounded-t-DEFAULT border-b-2 border-transparent focus:border-primary outline-none font-body transition-colors" id="password" name="password" placeholder="Create a strong password" required="" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center h-8 w-8 rounded-full hover:bg-surface-variant" type="button">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0;">visibility</span>
+</button>
+</div>
+<!-- Password Strength Indicator -->
+<div class="mt-2 flex flex-col gap-1.5 px-1">
+<div class="flex gap-1 h-1 w-full">
+<div class="flex-1 bg-surface-dim rounded-full"></div>
+<div class="flex-1 bg-surface-dim rounded-full"></div>
+<div class="flex-1 bg-surface-dim rounded-full"></div>
+<div class="flex-1 bg-surface-dim rounded-full"></div>
+</div>
+<span class="font-label text-xs text-on-surface-variant">Password strength: Weak</span>
+</div>
+</div>
+<!-- Date of Birth & Phone -->
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="font-label text-sm font-medium text-on-surface px-1" for="dob">Date of Birth</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 group-focus-within:text-primary transition-colors text-[20px]">calendar_month</span>
+<input class="w-full bg-surface-container-low text-on-surface pl-12 pr-4 py-4 rounded-t-DEFAULT border-b-2 border-transparent focus:border-primary outline-none font-body transition-colors" id="dob" name="dob" required="" type="date"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label text-sm font-medium text-on-surface px-1" for="phone">Phone Number</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 group-focus-within:text-primary transition-colors text-[20px]">phone</span>
+<input class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/40 pl-12 pr-4 py-4 rounded-t-DEFAULT border-b-2 border-transparent focus:border-primary outline-none font-body transition-colors" id="phone" name="phone" placeholder="+1 (555) 000-0" type="tel"/>
+</div>
+</div>
+</div>
+<!-- Address -->
+<div class="flex flex-col gap-2">
+<label class="font-label text-sm font-medium text-on-surface px-1" for="address">Address</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-[18px] text-on-surface-variant/50 group-focus-within:text-primary transition-colors text-[20px]">location_on</span>
+<textarea class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/40 pl-12 pr-4 py-4 rounded-t-DEFAULT border-b-2 border-transparent focus:border-primary outline-none font-body transition-colors resize-none" id="address" name="address" placeholder="Street, City, Zip" rows="2"></textarea>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-3">
+<div class="flex items-center h-5 mt-0.5">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary focus:ring-offset-surface bg-surface-container-lowest transition-colors cursor-pointer" id="terms" required="" type="checkbox"/>
+</div>
+<label class="font-body text-sm text-on-surface-variant leading-relaxed cursor-pointer" for="terms">
+I agree to the <a class="text-primary hover:text-primary-container font-medium underline underline-offset-2 transition-colors" href="#">Terms of Service</a> and <a class="text-primary hover:text-primary-container font-medium underline underline-offset-2 transition-colors" href="#">Privacy Policy</a>.
+</label>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-body font-medium py-4 px-6 rounded-md shadow-[0_12px_24px_-8px_rgba(0,62,199,0.3)] hover:shadow-[0_16px_32px_-8px_rgba(0,62,199,0.4)] transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2" type="submit">
+<span>Create Account</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="relative flex items-center py-2">
+<div class="flex-grow border-t border-outline-variant/30"></div>
+<span class="flex-shrink-0 mx-4 font-label text-xs uppercase tracking-widest text-on-surface-variant">Already have an account?</span>
+<div class="flex-grow border-t border-outline-variant/30"></div>
+</div>
+<!-- Sign In Link -->
+<div class="text-center">
+<a class="inline-flex items-center justify-center w-full py-4 px-6 bg-transparent text-primary font-body font-medium rounded-md hover:bg-surface-container-low transition-colors duration-200 border border-transparent hover:border-surface-container-high" href="#">
+                            Sign In
+                        </a>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

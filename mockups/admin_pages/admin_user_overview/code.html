@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ticketline Admin - User Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+</style>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "secondary-container": "#d5e3fc",
+          "on-surface-variant": "#434656",
+          "on-background": "#191b25",
+          "tertiary-container": "#bf3003",
+          "on-primary-container": "#dfe3ff",
+          "tertiary-fixed-dim": "#ffb4a1",
+          "inverse-primary": "#b7c4ff",
+          "surface-bright": "#fbf8ff",
+          "surface-container-high": "#e7e7f5",
+          "surface": "#fbf8ff",
+          "on-primary": "#ffffff",
+          "surface-dim": "#d9d9e7",
+          "secondary-fixed": "#d5e3fc",
+          "on-primary-fixed": "#001452",
+          "on-primary-fixed-variant": "#0038b6",
+          "inverse-surface": "#2e303a",
+          "primary-fixed-dim": "#b7c4ff",
+          "on-tertiary-fixed-variant": "#891e00",
+          "on-secondary-fixed-variant": "#3a485b",
+          "primary": "#003ec7",
+          "on-secondary": "#ffffff",
+          "tertiary": "#952200",
+          "secondary": "#515f74",
+          "outline-variant": "#c3c5d9",
+          "error-container": "#ffdad6",
+          "surface-container": "#ededfb",
+          "tertiary-fixed": "#ffdbd2",
+          "surface-container-low": "#f3f2ff",
+          "surface-container-highest": "#e1e1ef",
+          "secondary-fixed-dim": "#b9c7df",
+          "on-error-container": "#93000a",
+          "on-secondary-fixed": "#0d1c2e",
+          "on-tertiary-container": "#ffddd5",
+          "on-tertiary-fixed": "#3c0800",
+          "outline": "#737688",
+          "on-secondary-container": "#57657a",
+          "surface-variant": "#e1e1ef",
+          "on-tertiary": "#ffffff",
+          "on-surface": "#191b25",
+          "on-error": "#ffffff",
+          "primary-fixed": "#dde1ff",
+          "primary-container": "#0052ff",
+          "surface-container-lowest": "#ffffff",
+          "inverse-on-surface": "#f0effe",
+          "error": "#ba1a1a",
+          "surface-tint": "#004ced",
+          "background": "#fbf8ff"
+        },
+        borderRadius: {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        fontFamily: {
+          "headline": ["Manrope"],
+          "body": ["Inter"],
+          "label": ["Inter"]
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex selection:bg-primary selection:text-on-primary">
+
+<!-- Sidebar -->
+<nav class="bg-[#f3f2ff] text-[#003ec7] font-['Inter'] text-sm antialiased w-72 flex-col fixed left-0 top-0 flex flex-col h-full py-8 z-40">
+  <div class="px-8 mb-12">
+    <h1 class="font-['Manrope'] font-extrabold text-[#003ec7] text-2xl tracking-tight">Admin Console</h1>
+    <p class="text-[#191b25]/70 mt-1 text-xs uppercase tracking-widest font-semibold">System Oversight</p>
+  </div>
+  <ul class="flex flex-col gap-2 flex-1">
+    <li>
+      <a class="flex items-center gap-3 text-[#191b25]/70 hover:text-[#003ec7] px-8 py-3 hover:bg-white/50 transition-all duration-200" href="#">
+        <span class="material-symbols-outlined">dashboard</span>
+        Dashboard
+      </a>
+    </li>
+    <!-- Active: User Management -->
+    <li>
+      <a class="flex items-center gap-3 bg-white text-[#003ec7] font-bold rounded-l-full ml-4 pl-4 py-3 shadow-[0_4px_24px_-8px_rgba(25,27,37,0.08)] relative" href="#">
+        <div class="absolute right-0 top-0 bottom-0 w-2 bg-surface"></div>
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">admin_panel_settings</span>
+        User Management
+      </a>
+    </li>
+    <li>
+      <a class="flex items-center gap-3 text-[#191b25]/70 hover:text-[#003ec7] px-8 py-3 hover:bg-white/50 transition-all duration-200" href="#">
+        <span class="material-symbols-outlined">newspaper</span>
+        News
+      </a>
+    </li>
+    <li>
+      <a class="flex items-center gap-3 text-[#191b25]/70 hover:text-[#003ec7] px-8 py-3 hover:bg-white/50 transition-all duration-200" href="#">
+        <span class="material-symbols-outlined">event</span>
+        Events
+      </a>
+    </li>
+    <li>
+      <a class="flex items-center gap-3 text-[#191b25]/70 hover:text-[#003ec7] px-8 py-3 hover:bg-white/50 transition-all duration-200" href="#">
+        <span class="material-symbols-outlined">storefront</span>
+        Merchandise
+      </a>
+    </li>
+    <li>
+      <a class="flex items-center gap-3 text-[#191b25]/70 hover:text-[#003ec7] px-8 py-3 hover:bg-white/50 transition-all duration-200" href="#">
+        <span class="material-symbols-outlined">location_on</span>
+        Venues
+      </a>
+    </li>
+  </ul>
+  <div class="px-8 mt-auto">
+    <div class="flex items-center gap-3 bg-white rounded-xl p-3 shadow-[0_4px_12px_-4px_rgba(25,27,37,0.08)]">
+      <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline font-bold text-sm">A</div>
+      <div>
+        <p class="font-semibold text-on-surface text-sm">Admin</p>
+        <p class="text-on-surface-variant text-xs">admin@ticketline.at</p>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Canvas -->
+<main class="ml-72 flex-1 p-12 lg:p-16 max-w-7xl">
+
+  <!-- Header -->
+  <header class="mb-10 flex justify-between items-end">
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[0.9rem]">group</span>
+          User Management
+        </span>
+      </div>
+      <h2 class="font-headline text-5xl font-extrabold text-on-surface tracking-tight">All Users</h2>
+      <p class="text-on-surface-variant mt-3 text-lg max-w-xl">Manage customers and administrators. Create, edit, lock, or reset passwords.</p>
+    </div>
+    <!-- Quick Stats -->
+    <div class="flex gap-8 text-right">
+      <div>
+        <p class="text-on-surface-variant text-sm font-medium mb-1">Total Users</p>
+        <p class="font-headline text-3xl font-bold text-on-surface">1,284</p>
+      </div>
+      <div>
+        <p class="text-on-surface-variant text-sm font-medium mb-1">Admins</p>
+        <p class="font-headline text-3xl font-bold text-primary">6</p>
+      </div>
+      <div>
+        <p class="text-on-surface-variant text-sm font-medium mb-1">Locked</p>
+        <p class="font-headline text-3xl font-bold text-tertiary">24</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tooling Bar -->
+  <div class="flex justify-between items-center mb-8 gap-4">
+    <!-- Search -->
+    <div class="relative w-80">
+      <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50">search</span>
+      <input class="w-full bg-surface-container-low border-none rounded-DEFAULT pl-12 pr-4 py-3 text-sm focus:ring-0 focus:border-b-2 focus:border-primary transition-all text-on-surface placeholder:text-on-surface-variant/50" placeholder="Search by name or email..." type="text"/>
+    </div>
+    <!-- Filters -->
+    <div class="flex gap-2 flex-1">
+      <button class="px-4 py-2 text-sm font-medium text-on-primary bg-primary rounded-full shadow-[0_4px_12px_-4px_rgba(0,62,199,0.3)]">All</button>
+      <button class="px-4 py-2 text-sm font-medium text-on-surface bg-surface-container-high rounded-full hover:bg-surface-variant transition-colors">Customer</button>
+      <button class="px-4 py-2 text-sm font-medium text-on-surface bg-surface-container-high rounded-full hover:bg-surface-variant transition-colors">Admin</button>
+      <button class="px-4 py-2 text-sm font-medium text-tertiary bg-tertiary-fixed/30 rounded-full hover:bg-tertiary-fixed/50 transition-colors flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+        Locked
+      </button>
+    </div>
+    <!-- Add User Button -->
+    <button class="flex items-center gap-2 bg-primary text-on-primary font-semibold px-5 py-2.5 rounded-full shadow-[0_4px_12px_-4px_rgba(0,62,199,0.3)] hover:opacity-90 transition-opacity text-sm whitespace-nowrap">
+      <span class="material-symbols-outlined text-[1.1rem]">person_add</span>
+      Add User
+    </button>
+  </div>
+
+  <!-- Table Header -->
+  <div class="grid grid-cols-12 px-6 mb-2 text-xs uppercase tracking-widest text-on-surface-variant/60 font-semibold">
+    <div class="col-span-4">User</div>
+    <div class="col-span-2">Role</div>
+    <div class="col-span-2">Status</div>
+    <div class="col-span-2">Registered</div>
+    <div class="col-span-2 text-right">Actions</div>
+  </div>
+
+  <!-- User List -->
+  <div class="flex flex-col gap-3">
+
+    <!-- Row 1 – Active Customer -->
+    <div class="group bg-surface-container-lowest rounded-xl grid grid-cols-12 items-center px-6 py-4 shadow-[0_4px_16px_-8px_rgba(25,27,37,0.04)] hover:shadow-[0_8px_24px_-8px_rgba(25,27,37,0.08)] transition-all duration-300">
+      <div class="col-span-4 flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary font-headline font-bold text-sm shrink-0">AK</div>
+        <div>
+          <p class="font-semibold text-on-surface text-sm">Anna Kaufmann</p>
+          <p class="text-on-surface-variant text-xs mt-0.5">a.kaufmann@example.at</p>
+        </div>
+      </div>
+      <div class="col-span-2">
+        <span class="text-xs font-medium text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">Customer</span>
+      </div>
+      <div class="col-span-2">
+        <span class="flex items-center gap-1.5 text-xs font-semibold text-green-700">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+          Active
+        </span>
+      </div>
+      <div class="col-span-2">
+        <p class="text-on-surface-variant text-xs">Mar 12, 2025</p>
+      </div>
+      <div class="col-span-2 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-variant transition-colors" title="Edit">
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">edit</span>
+        </button>
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-variant transition-colors" title="Reset Password">
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">lock_reset</span>
+        </button>
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-tertiary-fixed/40 transition-colors" title="Lock Account">
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">block</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Row 2 – Admin -->
+    <div class="group bg-surface-container-lowest rounded-xl grid grid-cols-12 items-center px-6 py-4 shadow-[0_4px_16px_-8px_rgba(25,27,37,0.04)] hover:shadow-[0_8px_24px_-8px_rgba(25,27,37,0.08)] transition-all duration-300">
+      <div class="col-span-4 flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-headline font-bold text-sm shrink-0">BM</div>
+        <div>
+          <p class="font-semibold text-on-surface text-sm">Bernhard Mayr</p>
+          <p class="text-on-surface-variant text-xs mt-0.5">b.mayr@ticketline.at</p>
+        </div>
+      </div>
+      <div class="col-span-2">
+        <span class="text-xs font-medium text-primary bg-primary/10 px-2.5 py-1 rounded-full flex items-center gap-1 w-fit">
+          <span class="material-symbols-outlined text-[0.8rem]">shield</span>
+          Admin
+        </span>
+      </div>
+      <div class="col-span-2">
+        <span class="flex items-center gap-1.5 text-xs font-semibold text-green-700">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+          Active
+        </span>
+      </div>
+      <div class="col-span-2">
+        <p class="text-on-surface-variant text-xs">Jan 5, 2024</p>
+      </div>
+      <div class="col-span-2 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-variant transition-colors" title="Edit">
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">edit</span>
+        </button>
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-variant transition-colors" title="Reset Password">
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">lock_reset</span>
+        </button>
+        <!-- Lock disabled for admins to prevent self-lockout -->
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg opacity-30 cursor-not-allowed" title="Cannot lock admin" disabled>
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">block</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Row 3 – Locked Customer -->
+    <div class="group bg-tertiary-fixed/10 border border-tertiary-fixed/40 rounded-xl grid grid-cols-12 items-center px-6 py-4 shadow-[0_8px_24px_-8px_rgba(25,27,37,0.08)] transition-all duration-300">
+      <div class="col-span-4 flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-headline font-bold text-sm shrink-0">JD</div>
+        <div>
+          <p class="font-semibold text-on-surface text-sm">Julianne Doppler</p>
+          <p class="text-on-surface-variant text-xs mt-0.5">j.doppler@example.com</p>
+        </div>
+      </div>
+      <div class="col-span-2">
+        <span class="text-xs font-medium text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">Customer</span>
+      </div>
+      <div class="col-span-2">
+        <span class="flex items-center gap-1.5 text-xs font-semibold text-tertiary">
+          <span class="material-symbols-outlined text-[0.9rem]">lock</span>
+          Locked
+        </span>
+      </div>
+      <div class="col-span-2">
+        <p class="text-on-surface-variant text-xs">Aug 3, 2024</p>
+      </div>
+      <div class="col-span-2 flex justify-end gap-2 transition-opacity">
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-variant transition-colors" title="Edit">
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">edit</span>
+        </button>
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-variant transition-colors" title="Reset Password">
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">lock_reset</span>
+        </button>
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-green-100 transition-colors" title="Unlock Account">
+          <span class="material-symbols-outlined text-[1.1rem] text-green-700">lock_open</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Row 4 – Active Customer -->
+    <div class="group bg-surface-container-lowest rounded-xl grid grid-cols-12 items-center px-6 py-4 shadow-[0_4px_16px_-8px_rgba(25,27,37,0.04)] hover:shadow-[0_8px_24px_-8px_rgba(25,27,37,0.08)] transition-all duration-300">
+      <div class="col-span-4 flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary font-headline font-bold text-sm shrink-0">FW</div>
+        <div>
+          <p class="font-semibold text-on-surface text-sm">Franz Weber</p>
+          <p class="text-on-surface-variant text-xs mt-0.5">f.weber@gmx.at</p>
+        </div>
+      </div>
+      <div class="col-span-2">
+        <span class="text-xs font-medium text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">Customer</span>
+      </div>
+      <div class="col-span-2">
+        <span class="flex items-center gap-1.5 text-xs font-semibold text-green-700">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+          Active
+        </span>
+      </div>
+      <div class="col-span-2">
+        <p class="text-on-surface-variant text-xs">Nov 20, 2024</p>
+      </div>
+      <div class="col-span-2 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-variant transition-colors" title="Edit">
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">edit</span>
+        </button>
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-variant transition-colors" title="Reset Password">
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">lock_reset</span>
+        </button>
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-tertiary-fixed/40 transition-colors" title="Lock Account">
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">block</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Row 5 – Active Customer -->
+    <div class="group bg-surface-container-lowest rounded-xl grid grid-cols-12 items-center px-6 py-4 shadow-[0_4px_16px_-8px_rgba(25,27,37,0.04)] hover:shadow-[0_8px_24px_-8px_rgba(25,27,37,0.08)] transition-all duration-300">
+      <div class="col-span-4 flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary font-headline font-bold text-sm shrink-0">LH</div>
+        <div>
+          <p class="font-semibold text-on-surface text-sm">Laura Huber</p>
+          <p class="text-on-surface-variant text-xs mt-0.5">laura.huber@outlook.com</p>
+        </div>
+      </div>
+      <div class="col-span-2">
+        <span class="text-xs font-medium text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">Customer</span>
+      </div>
+      <div class="col-span-2">
+        <span class="flex items-center gap-1.5 text-xs font-semibold text-green-700">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+          Active
+        </span>
+      </div>
+      <div class="col-span-2">
+        <p class="text-on-surface-variant text-xs">Feb 9, 2025</p>
+      </div>
+      <div class="col-span-2 flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-variant transition-colors" title="Edit">
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">edit</span>
+        </button>
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-variant transition-colors" title="Reset Password">
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">lock_reset</span>
+        </button>
+        <button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-tertiary-fixed/40 transition-colors" title="Lock Account">
+          <span class="material-symbols-outlined text-[1.1rem] text-on-surface-variant">block</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Pagination -->
+  <div class="mt-10 flex justify-between items-center border-t border-outline-variant/20 pt-6">
+    <span class="text-on-surface-variant text-sm font-medium">Showing 1–5 of 1,284 users</span>
+    <div class="flex gap-2">
+      <button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors disabled:opacity-50" disabled>
+        <span class="material-symbols-outlined">chevron_left</span>
+      </button>
+      <button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface bg-surface-container-highest">1</button>
+      <button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors">2</button>
+      <button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors">3</button>
+      <button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors">
+        <span class="material-symbols-outlined">chevron_right</span>
+      </button>
+    </div>
+  </div>
+
+</main>
+</body>
+</html>
+
+

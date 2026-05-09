@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ticketline - Sign In</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@400;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed": "#0d1c2e",
+                        "surface-dim": "#d9d9e7",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "on-tertiary-fixed-variant": "#891e00",
+                        "surface-container-highest": "#e1e1ef",
+                        "on-tertiary-fixed": "#3c0800",
+                        "on-primary-container": "#dfe3ff",
+                        "outline-variant": "#c3c5d9",
+                        "on-primary-fixed": "#001452",
+                        "tertiary-fixed": "#ffdbd2",
+                        "tertiary-fixed-dim": "#ffb4a1",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#e7e7f5",
+                        "surface-container": "#ededfb",
+                        "primary": "#003ec7",
+                        "inverse-on-surface": "#f0effe",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#0038b6",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#bf3003",
+                        "primary-container": "#0052ff",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary": "#515f74",
+                        "inverse-primary": "#b7c4ff",
+                        "secondary-fixed": "#d5e3fc",
+                        "surface-tint": "#004ced",
+                        "primary-fixed": "#dde1ff",
+                        "secondary-container": "#d5e3fc",
+                        "outline": "#737688",
+                        "on-surface-variant": "#434656",
+                        "tertiary": "#952200",
+                        "surface-variant": "#e1e1ef",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#fbf8ff",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2e303a",
+                        "on-surface": "#191b25",
+                        "on-tertiary-container": "#ffddd5",
+                        "surface": "#fbf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fbf8ff",
+                        "surface-container-low": "#f3f2ff",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "on-secondary-container": "#57657a",
+                        "on-background": "#191b25"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-primary/20 selection:text-primary min-h-screen flex flex-col">
+<!-- 
+      Navigation suppressed based on mandate:
+      "Linear/Transactional: Login, Sign-up, Onboarding, Checkout, or 'Success/Confirmation' splash screens."
+      This ensures the user remains entirely focused on the authentication task.
+    -->
+<main class="flex-1 flex w-full">
+<div class="flex w-full max-w-[1920px] mx-auto bg-surface-container-lowest lg:bg-transparent">
+<!-- Left Side: Editorial Branding Anchor (Hidden on smaller screens to prioritize canvas) -->
+<div class="hidden lg:flex w-1/2 relative flex-col justify-between p-16 xl:p-24 overflow-hidden">
+<!-- Background Image layer to act as a physical surface depth -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-surface/40 via-surface/10 to-surface-container-lowest z-10"></div>
+<img alt="" class="w-full h-full object-cover object-center opacity-80" data-alt="abstract architectural shot of a modern concert hall interior structure, soft ambient lighting highlighting sleek curves, sophisticated and atmospheric mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ2risdbln1ZSbmxOP__nZU6vYEivbWTTKk660K4iY9xcMpNV4gV06avYM1_2wuEnMa4E6GbsR3U2peG6MK6eQCPNFA1qeHP0UHYjJwRgprgan0UgriuvLy9udiWJn2ROubESsXVuXW3jo3lfPiMImw4JHFGU9h6k7V4wTvfyyZb9gTIJ7KouYO9C2F2m4j1da_Aq4pfWRRyf_Xf3dWbBg_F_w1rwTvkoVQ4d5BCSp5MD531CKV6Fy2yXL8hs5EU5Ve35W_pkIZFu2"/>
+</div>
+<!-- Content Layer -->
+<div class="relative z-20 flex flex-col h-full justify-between">
+<!-- Brand Identity -->
+<div>
+<span class="font-headline font-black text-3xl tracking-tighter text-primary">Ticketline</span>
+</div>
+<!-- Editorial Statement -->
+<div class="max-w-xl space-y-6">
+<h1 class="font-headline font-bold text-5xl xl:text-6xl text-on-surface leading-[1.1] tracking-tight">
+                            Access the extraordinary.
+                        </h1>
+<p class="font-body text-lg text-on-surface-variant max-w-md leading-relaxed">
+                            Your gateway to curated live experiences. Sign in to manage your tickets, explore upcoming events, and secure your place.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Right Side: The Functional Canvas -->
+<div class="w-full lg:w-1/2 flex items-center justify-center p-8 sm:p-12 lg:p-24 bg-surface-container-lowest relative z-10 lg:shadow-[-24px_0_48px_-12px_rgba(25,27,37,0.05)]">
+<div class="w-full max-w-md space-y-12">
+<!-- Mobile Brand Anchor -->
+<div class="lg:hidden text-center sm:text-left mb-8">
+<span class="font-headline font-black text-2xl tracking-tighter text-primary">Ticketline</span>
+</div>
+<!-- Section Header -->
+<div class="space-y-3 text-center sm:text-left">
+<h2 class="font-headline font-bold text-3xl sm:text-4xl text-on-surface tracking-tight">Welcome back</h2>
+<p class="font-body text-on-surface-variant">Enter your credentials to access your portal.</p>
+</div>
+<!-- Transactional Form -->
+<form action="#" class="space-y-8" method="POST">
+<!-- Inputs -->
+<div class="space-y-6">
+<!-- Email Input -->
+<div class="flex flex-col gap-2">
+<label class="font-label text-sm font-medium text-on-surface px-1" for="email">Email Address</label>
+<input class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/40 px-4 py-4 rounded-t-DEFAULT border-b-2 border-transparent focus:border-primary outline-none font-body transition-colors" id="email" name="email" placeholder="name@example.com" required="" type="email"/>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-2 relative">
+<label class="font-label text-sm font-medium text-on-surface px-1" for="password">Password</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/40 px-4 py-4 pr-12 rounded-t-DEFAULT border-b-2 border-transparent focus:border-primary outline-none font-body transition-colors" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button aria-label="Toggle password visibility" class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center h-8 w-8 rounded-full hover:bg-surface-variant" type="button">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0;">visibility</span>
+</button>
+</div>
+<div class="flex justify-end pt-1">
+<a class="font-label text-sm font-medium text-on-surface-variant hover:text-primary transition-colors" href="#">Forgot password?</a>
+</div>
+</div>
+</div>
+<!-- Primary Action Button (The Jewel Component) -->
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-body font-medium py-4 px-6 rounded-md shadow-[0_12px_24px_-8px_rgba(0,62,199,0.3)] hover:shadow-[0_16px_32px_-8px_rgba(0,62,199,0.4)] transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2" type="submit">
+<span>Sign In</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+</form>
+<!-- Divider (Air & Ghost Line) -->
+<div class="relative flex items-center py-4">
+<div class="flex-grow border-t border-outline-variant/30"></div>
+<span class="flex-shrink-0 mx-4 font-label text-xs uppercase tracking-widest text-on-surface-variant">New to Ticketline?</span>
+<div class="flex-grow border-t border-outline-variant/30"></div>
+</div>
+<!-- Secondary Action (Registration) -->
+<div class="text-center">
+<a class="inline-flex items-center justify-center w-full py-4 px-6 bg-transparent text-primary font-body font-medium rounded-md hover:bg-surface-container-low transition-colors duration-200 border border-transparent hover:border-surface-container-high" href="#">
+                            Create an account
+                        </a>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

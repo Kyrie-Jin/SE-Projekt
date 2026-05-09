@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ticketline – Venues</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          'secondary-container': '#d5e3fc', 'on-surface-variant': '#434656', 'on-background': '#191b25',
+          'tertiary-container': '#bf3003', 'on-primary-container': '#dfe3ff', 'tertiary-fixed-dim': '#ffb4a1',
+          'inverse-primary': '#b7c4ff', 'surface-bright': '#fbf8ff', 'surface-container-high': '#e7e7f5',
+          'surface': '#fbf8ff', 'on-primary': '#ffffff', 'surface-dim': '#d9d9e7',
+          'secondary-fixed': '#d5e3fc', 'on-primary-fixed': '#001452', 'on-primary-fixed-variant': '#0038b6',
+          'inverse-surface': '#2e303a', 'primary-fixed-dim': '#b7c4ff', 'on-tertiary-fixed-variant': '#891e00',
+          'on-secondary-fixed-variant': '#3a485b', 'primary': '#003ec7', 'on-secondary': '#ffffff',
+          'tertiary': '#952200', 'secondary': '#515f74', 'outline-variant': '#c3c5d9',
+          'error-container': '#ffdad6', 'surface-container': '#ededfb', 'tertiary-fixed': '#ffdbd2',
+          'surface-container-low': '#f3f2ff', 'surface-container-highest': '#e1e1ef',
+          'secondary-fixed-dim': '#b9c7df', 'on-error-container': '#93000a', 'on-secondary-fixed': '#0d1c2e',
+          'on-tertiary-container': '#ffddd5', 'on-tertiary-fixed': '#3c0800', 'outline': '#737688',
+          'on-secondary-container': '#57657a', 'surface-variant': '#e1e1ef', 'on-tertiary': '#ffffff',
+          'on-surface': '#191b25', 'on-error': '#ffffff', 'primary-fixed': '#dde1ff',
+          'primary-container': '#0052ff', 'surface-container-lowest': '#ffffff',
+          'inverse-on-surface': '#f0effe', 'error': '#ba1a1a', 'surface-tint': '#004ced', 'background': '#fbf8ff'
+        },
+        borderRadius: { 'DEFAULT': '0.125rem', 'lg': '0.25rem', 'xl': '0.5rem', 'full': '0.75rem' },
+        fontFamily: { 'headline': ['Manrope'], 'body': ['Inter'], 'label': ['Inter'] }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen">
+
+  <!-- Top Navigation Bar -->
+  <nav class="bg-surface-container-lowest border-b border-outline-variant/40 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="font-headline font-extrabold text-primary text-xl tracking-tight">Ticketline</a>
+
+      <!-- Nav Links -->
+      <div class="flex items-center gap-1">
+        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined text-[1rem]">newspaper</span>
+          News
+        </a>
+        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined text-[1rem]">event</span>
+          Events
+        </a>
+        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined text-[1rem]">confirmation_number</span>
+          Tickets
+        </a>
+        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors">
+          <span class="material-symbols-outlined text-[1rem]">storefront</span>
+          Shop
+        </a>
+      </div>
+
+      <!-- User Avatar -->
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-primary font-headline font-bold text-sm cursor-pointer hover:ring-2 hover:ring-primary/30 transition-all">AK</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-8 py-12">
+
+    <!-- Page Header -->
+    <header class="mb-10">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[0.9rem]">location_on</span>
+          Locations
+        </span>
+      </div>
+      <h1 class="font-headline text-5xl font-extrabold text-on-surface tracking-tight">Venues</h1>
+      <p class="text-on-surface-variant mt-3 text-lg">Search for performance venues across Austria.</p>
+    </header>
+
+    <!-- Search Form Card -->
+    <section class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_4px_16px_-8px_rgba(25,27,37,0.06)] mb-12">
+      <h2 class="text-xs uppercase tracking-widest text-on-surface-variant/60 font-semibold mb-6">Filter Venues</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Name Input -->
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 text-[1.2rem]">storefront</span>
+          <input type="text" placeholder="e.g. Wiener Stadthalle" class="w-full bg-surface-container-low border-none rounded-lg pl-11 pr-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary transition-all">
+        </div>
+        <!-- Street Input -->
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 text-[1.2rem]">signpost</span>
+          <input type="text" placeholder="e.g. Roland-Rainer-Platz" class="w-full bg-surface-container-low border-none rounded-lg pl-11 pr-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary transition-all">
+        </div>
+        <!-- City Input -->
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 text-[1.2rem]">location_city</span>
+          <input type="text" placeholder="e.g. Vienna" class="w-full bg-surface-container-low border-none rounded-lg pl-11 pr-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary transition-all">
+        </div>
+        <!-- Country Input -->
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 text-[1.2rem]">flag</span>
+          <input type="text" placeholder="e.g. Austria" class="w-full bg-surface-container-low border-none rounded-lg pl-11 pr-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary transition-all">
+        </div>
+        <!-- ZIP Code Input -->
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 text-[1.2rem]">markunread_mailbox</span>
+          <input type="text" placeholder="e.g. 1150" class="w-full bg-surface-container-low border-none rounded-lg pl-11 pr-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary transition-all">
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end gap-6">
+        <a href="#" class="text-on-surface-variant text-sm hover:text-on-surface transition-colors">Clear Filters</a>
+        <button class="bg-primary text-on-primary rounded-full px-6 py-3 flex items-center gap-2 text-sm font-semibold hover:bg-primary-container transition-all">
+          <span class="material-symbols-outlined text-[1.2rem]">search</span>
+          Search Venues
+        </button>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section>
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-sm text-on-surface-variant">5 venues found</h3>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-on-surface-variant/60 font-medium">Sort by:</span>
+          <select class="bg-transparent border-none text-sm font-semibold text-primary focus:ring-0 cursor-pointer">
+            <option>Name (A-Z)</option>
+            <option>Capacity (High to Low)</option>
+            <option>City</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Results Table -->
+      <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-surface-container-low border-b border-outline-variant/40">
+              <th class="text-xs uppercase tracking-wide text-on-surface-variant font-semibold px-6 py-4">Name</th>
+              <th class="text-xs uppercase tracking-wide text-on-surface-variant font-semibold px-6 py-4">Address</th>
+              <th class="text-xs uppercase tracking-wide text-on-surface-variant font-semibold px-6 py-4">City</th>
+              <th class="text-xs uppercase tracking-wide text-on-surface-variant font-semibold px-6 py-4">Capacity</th>
+              <th class="text-xs uppercase tracking-wide text-on-surface-variant font-semibold px-6 py-4 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-outline-variant/20">
+            <!-- Row 1 -->
+            <tr class="bg-white hover:bg-surface-container-low transition-colors group">
+              <td class="px-6 py-4 font-semibold text-on-surface">Wiener Stadthalle</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">Roland-Rainer-Platz 1</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">Vienna</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">16,000</td>
+              <td class="px-6 py-4 text-right">
+                <a href="#" class="inline-flex items-center gap-1 text-primary text-sm font-semibold hover:gap-2 transition-all">
+                  View Performances
+                  <span class="material-symbols-outlined text-[1.1rem]">arrow_forward</span>
+                </a>
+              </td>
+            </tr>
+            <!-- Row 2 -->
+            <tr class="bg-surface-container-lowest/50 hover:bg-surface-container-low transition-colors group">
+              <td class="px-6 py-4 font-semibold text-on-surface">Konzerthaus Wien</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">Lothringerstraße 20</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">Vienna</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">1,840</td>
+              <td class="px-6 py-4 text-right">
+                <a href="#" class="inline-flex items-center gap-1 text-primary text-sm font-semibold hover:gap-2 transition-all">
+                  View Performances
+                  <span class="material-symbols-outlined text-[1.1rem]">arrow_forward</span>
+                </a>
+              </td>
+            </tr>
+            <!-- Row 3 -->
+            <tr class="bg-white hover:bg-surface-container-low transition-colors group">
+              <td class="px-6 py-4 font-semibold text-on-surface">Musikverein Wien</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">Musikvereinsplatz 1</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">Vienna</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">1,744</td>
+              <td class="px-6 py-4 text-right">
+                <a href="#" class="inline-flex items-center gap-1 text-primary text-sm font-semibold hover:gap-2 transition-all">
+                  View Performances
+                  <span class="material-symbols-outlined text-[1.1rem]">arrow_forward</span>
+                </a>
+              </td>
+            </tr>
+            <!-- Row 4 -->
+            <tr class="bg-surface-container-lowest/50 hover:bg-surface-container-low transition-colors group">
+              <td class="px-6 py-4 font-semibold text-on-surface">Volksoper Wien</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">Währinger Straße 78</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">Vienna</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">1,337</td>
+              <td class="px-6 py-4 text-right">
+                <a href="#" class="inline-flex items-center gap-1 text-primary text-sm font-semibold hover:gap-2 transition-all">
+                  View Performances
+                  <span class="material-symbols-outlined text-[1.1rem]">arrow_forward</span>
+                </a>
+              </td>
+            </tr>
+            <!-- Row 5 -->
+            <tr class="bg-white hover:bg-surface-container-low transition-colors group">
+              <td class="px-6 py-4 font-semibold text-on-surface">Arena Wien</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">Baumgasse 80</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">Vienna</td>
+              <td class="px-6 py-4 text-sm text-on-surface-variant">5,500</td>
+              <td class="px-6 py-4 text-right">
+                <a href="#" class="inline-flex items-center gap-1 text-primary text-sm font-semibold hover:gap-2 transition-all">
+                  View Performances
+                  <span class="material-symbols-outlined text-[1.1rem]">arrow_forward</span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+[submodule "sepr-groupphase-template"]
+	path = sepr-groupphase-template
+	url = https://reset.inso-world.com/repo/2026ss-se-pr-group/26ss-se-pr-inso-13.git
