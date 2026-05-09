@@ -61,10 +61,11 @@ classDiagram
     class Xxx {
         <<Entity>>
         -Long id
+        -UUID uuid
     }
 
     class XxxDto {
-        -Long id
+        -UUID uuid
     }
 
     class XxxMapper {
@@ -189,6 +190,8 @@ classDiagram
 
     class ApplicationUser {
         <<Entity>>
+        -Long id
+        -UUID uuid
         -String email
         -String password
         -Boolean admin
@@ -200,6 +203,8 @@ classDiagram
 
     class PasswordResetToken {
         <<Entity>>
+        -Long id
+        -UUID uuid
         -String token
         -LocalDateTime expiresAt
         -Boolean used
@@ -223,7 +228,7 @@ classDiagram
     }
 
     class UserDetailDto {
-        -Long id
+        -UUID uuid
         -String firstName
         -String lastName
         -String email
@@ -385,6 +390,17 @@ Ein zentraler `GlobalExceptionHandler` mit `@ControllerAdvice` fängt alle appli
 | `MethodArgumentNotValidException` | 400 Bad Request | Validierungsfehler als Map |
 
 **Vorteil:** Kein Endpoint muss Exception-Handling selbst implementieren; alle Fehlerantworten folgen einem einheitlichen Format.
+
+### 2.8 Internal/External ID Pattern
+
+Um die interne Datenbankstruktur zu kapseln und die Sicherheit zu erhöhen (Security by Obscurity), wird strikt zwischen internen und externen Identifikatoren unterschieden:
+
+*   **Internal ID (`Long id`):** Ein technischer Primärschlüssel (Auto-Increment), der ausschließlich innerhalb der Persistenzschicht und für Datenbank-Joins verwendet wird. Diese ID wird niemals über die REST-Schnittstelle nach außen gegeben.
+*   **External ID (`UUID uuid`):** Ein fachlich-technischer, zufällig generierter Identifikator, der in DTOs verwendet wird. Alle öffentlichen API-Endpoints (z.B. `GET /api/v1/messages/{uuid}`) nutzen ausschließlich diese UUID zur Identifikation von Ressourcen.
+
+**Vorteil:**
+1.  Verhindert *ID Enumeration Attacks* (Angreifer können IDs nicht einfach hochzählen).
+2.  Entkoppelt die öffentliche API von der internen Datenbank-Logik.
 
 ---
 

@@ -53,6 +53,7 @@ graph TD
 - **DTO (Data Transfer Object):** Transport zwischen UI und REST-API (kein direktes Entity-Exposure)
 - **Entity:** Repräsentation der Datenbankzeilen, wird nur innerhalb des Backends verwendet
 - **MapStruct:** Automatisiertes, typsicheres Mapping zwischen DTO <-> Entity zur Compile-Zeit
+- **Internal/External ID Pattern:** Strenge Trennung zwischen internen `Long` Primärschlüsseln und externen `UUID` Identifikatoren zur Erhöhung der API-Sicherheit.
 
 ### 2.2 Horizontale Strukturierung (Module)
 

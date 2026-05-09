@@ -5,6 +5,7 @@
         class ApplicationUser {
             <<Entity>>
             -Long id
+            -UUID uuid
             -String email
             -String password
             -String firstName
@@ -23,6 +24,7 @@
         class PasswordResetToken {
             <<Entity>>
             -Long id
+            -UUID uuid
             -String token
             -LocalDateTime expiresAt
             -Boolean used
@@ -31,6 +33,7 @@
         class Message {
             <<Entity>>
             -Long id
+            -UUID uuid
             -String title
             -String summary
             -String text
@@ -40,6 +43,7 @@
         class MessageImage {
             <<Entity>>
             -Long id
+            -UUID uuid
             -byte[] imageData
             -String mimeType
             -boolean isCover
@@ -48,12 +52,14 @@
         class MessageRead {
             <<Entity>>
             -Long id
+            -UUID uuid
             -LocalDateTime readAt
         }
 
         class Artist {
             <<Entity>>
             -Long id
+            -UUID uuid
             -String artistname
             -String firstname
             -String lastname
@@ -62,6 +68,7 @@
         class EventCategory {
             <<Entity>>
             -Long id
+            -UUID uuid
             -String name
             -String description
         }
@@ -69,6 +76,7 @@
         class Event {
             <<Entity>>
             -Long id
+            -UUID uuid
             -String title
             -String description
             -int durationMinutes
@@ -77,6 +85,7 @@
         class Performance {
             <<Entity>>
             -Long id
+            -UUID uuid
             -LocalDateTime dateTime
             -BigDecimal basePrice
         }
@@ -84,6 +93,7 @@
         class Country {
             <<Entity>>
             -Long id
+            -UUID uuid
             -String name
             -String isoCode
         }
@@ -91,6 +101,7 @@
         class Venue {
             <<Entity>>
             -Long id
+            -UUID uuid
             -String name
             -String street
             -String city
@@ -100,6 +111,7 @@
         class Hall {
             <<Entity>>
             -Long id
+            -UUID uuid
             -String name
             -int totalCapacity
         }
@@ -135,6 +147,7 @@
         class Sector {
             <<Entity>>
             -Long id
+            -UUID uuid
             -String name
             -SectorType type
             -int capacity
@@ -144,6 +157,7 @@
         class Seat {
             <<Entity>>
             -Long id
+            -UUID uuid
             -int rowNumber
             -int seatNumber
             -String seatType
@@ -152,6 +166,7 @@
         class OrderItem {
             <<abstract>>
             -Long id
+            -UUID uuid
             -int quantity
             -BigDecimal unitPrice
         }
@@ -168,6 +183,7 @@
         class Reservation {
             <<Entity>>
             -Long id
+            -UUID uuid
             -String reservationNumber
             -ReservationStatus status
             -LocalDateTime reservedAt
@@ -177,6 +193,7 @@
         class Order {
             <<Entity>>
             -Long id
+            -UUID uuid
             -LocalDateTime orderDate
             -BigDecimal totalPrice
             -String paymentMethod
@@ -185,6 +202,7 @@
         class Invoice {
             <<Entity>>
             -Long id
+            -UUID uuid
             -String invoiceNumber
             -LocalDateTime invoiceDate
             -InvoiceType type
@@ -203,6 +221,7 @@
         class MerchandiseArticle {
             <<Entity>>
             -Long id
+            -UUID uuid
             -String name
             -String description
             -BigDecimal price
