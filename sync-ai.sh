@@ -1,18 +1,22 @@
 #!/bin/bash
 
 # Define project structure
-SUBMODULE_PATH="sepr-groupphase-template"
+SUBMODULE_PATH="26ss-se-pr-inso-13"
 BACKEND_PATH="$SUBMODULE_PATH/backend"
+FRONTEND_PATH="$SUBMODULE_PATH/frontend"
 
 # Map of source files to destinations
 # Format: "source_file:destination_file"
 FILES=(
     ".ai-configs/claude-md/root-CLAUDE.md:CLAUDE.md"
     ".ai-configs/claude-md/backend-CLAUDE.md:$BACKEND_PATH/CLAUDE.md"
+    ".ai-configs/claude-md/frontend-CLAUDE.md:$FRONTEND_PATH/CLAUDE.md"
     ".ai-configs/gemini-md/root-GEMINI.md:GEMINI.md"
     ".ai-configs/gemini-md/backend-GEMINI.md:$BACKEND_PATH/GEMINI.md"
+    ".ai-configs/gemini-md/frontend-GEMINI.md:$FRONTEND_PATH/GEMINI.md"
     ".ai-configs/agents-md/root-AGENTS.md:AGENTS.md"
     ".ai-configs/agents-md/backend-AGENTS.md:$BACKEND_PATH/AGENTS.md"
+    ".ai-configs/agents-md/frontend-AGENTS.md:$FRONTEND_PATH/AGENTS.md"
 )
 
 echo "🔄 Synchronizing AI configuration files..."
@@ -38,7 +42,7 @@ if [ -d "$SUBMODULE_PATH/.git" ] || [ -f "$SUBMODULE_PATH/.git" ]; then
     
     if [ -n "$EXCLUDE_FILE" ]; then
         # Rules to add to submodule's local exclude file
-        RULES=("backend/CLAUDE.md" "backend/GEMINI.md" "backend/AGENTS.md")
+        RULES=("backend/CLAUDE.md" "backend/GEMINI.md" "backend/AGENTS.md" "frontend/CLAUDE.md" "frontend/GEMINI.md" "frontend/AGENTS.md")
         
         for rule in "${RULES[@]}"; do
             grep -q "^$rule$" "$EXCLUDE_FILE" || echo "$rule" >> "$EXCLUDE_FILE"

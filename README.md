@@ -6,8 +6,8 @@ Dieses Repository enthält die Konzepte, Mockups und den Quellcode für das Proj
 
 - `Konzept/`: Enthält Designdokument, Domänenmodell und Softwarearchitektur.
 - `mockups/`: HTML-Prototypen und Design-Assets.
-- `sepr-groupphase-template/`: Das Haupt-Backend und Frontend (als Git Submodule).
-- `.ai-configs/`: Zentrale Verwaltung der AI-Instruktionen (`CLAUDE.md`).
+- `26ss-se-pr-inso-13/`: Das Haupt-Backend und Frontend (als Git Submodule).
+- `.ai-configs/`: Zentrale Verwaltung der AI-Instruktionen (`CLAUDE.md, GEMINI.md, AGENTS.md`).
 
 ## AI Workflow (CLAUDE.md, GEMINI.md, AGENTS.md)
 
@@ -35,5 +35,5 @@ Nach Änderungen in `.ai-configs/` muss das Script ausgeführt werden:
 ## Entwicklung
 
 ### Backend & Frontend
-Informationen zum Build-Prozess und zur Entwicklung findest du in der [README.md des Templates](sepr-groupphase-template/backend/Readme.md).
+Informationen zum Build-Prozess und zur Entwicklung findest du in der [README.md des Templates](26ss-se-pr-inso-13/backend/Readme.md).
 

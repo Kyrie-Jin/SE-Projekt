@@ -13,11 +13,11 @@ Dies ist der Arbeitsbereich für das TU Wien SEPR Gruppenprojekt **Ticketline 4.
 | `Konzept/` | Eigene Konzeptdokumente: Softwarearchitektur, Domainmodell, Designdokument |
 | `mockups/` | UI-Mockups gegliedert nach Seiten (login, customer, admin, …) |
 | `tickets/` | Erstellte Tickets mit Akzeptanzkriterien (Markdown, GitLab-kompatibel) |
-| `sepr-groupphase-template/` | **Das eigentliche Projekt** – Spring Boot Backend + Angular Frontend + E2E |
+| `26ss-se-pr-inso-13/` | **Das eigentliche Projekt** – Spring Boot Backend + Angular Frontend + E2E |
 
 ## Das eigentliche Projekt
 
-Der gesamte implementierbare Code befindet sich in `sepr-groupphase-template/`:
+Der gesamte implementierbare Code befindet sich in `26ss-se-pr-inso-13/`:
 f
 - `backend/` – Spring Boot 4.0.5 / Java 25, Maven, H2-Datenbank, JWT-Authentifizierung
 - `frontend/` – Angular 21 / TypeScript, npm

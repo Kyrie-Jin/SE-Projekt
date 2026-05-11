@@ -221,7 +221,7 @@ classDiagram
         -String lastName
         -String email
         -String password
-        -String street
+        -String streetAddress
         -String city
         -String postalCode
         -Date birthdate
@@ -466,16 +466,28 @@ Ticketline 4.0 verwendet ausschließlich **Runtime Exceptions** (unkontrollierte
 Der `GlobalExceptionHandler` (`endpoint/exceptionhandler/GlobalExceptionHandler.java`) trägt die Annotation `@ControllerAdvice` und fängt alle applikationsspezifischen Exceptions zentral ab. 
 
 ### 4.4 Fehlerantwortformat
+* Bei Validation fehler
 ```json
 {
-  "status": 422,
-  "message": "Validation failed",
-  "fieldErrors": [
-    {
-      "field": "email",
-      "message": "must be a valid email address"
+    "message": "Validation failed",
+    "validationErrors": {
+        "birthdate": [
+            "Birthdate must be in the past",
+            "User must be at least 18 years old"
+        ],
+        "password": [
+            "Password must be at least 8 characters long"
+        ],
+        "email": [
+            "Email must be a valid email address"
+        ]
     }
-  ]
+}
+```
+Bei anderen Fehlern: 
+```json
+{
+    "message": "<FEHLERNACHRICHT>"
 }
 ```
 
@@ -632,12 +644,36 @@ Die Rollenprüfung erfolgt deklarativ via `@Secured("ROLE_X")` auf Endpoint-Meth
 |--------|---------|----------------|
 | Unauthentifizierter Zugriff | JWT-Validierung auf allen geschützten Endpoints | `JwtAuthorizationFilter` |
 | Unberechtigter Zugriff | Rollenbasierte Zugriffskontrolle | `@Secured("ROLE_X")` |
-| Klartext-Passwörter | BCrypt-Hashing | `PasswordEncoder` (Spring Security) |
+| Klartext-Passwörter | BCrypt-Hashing mit automatischem Salt + applikationsseitigem Pepper | `PasswordEncoder` (Spring Security) + `security.pepper` in `application.yml` |
 | SQL-Injection | JPA/JPQL mit Parameter-Binding | Kein String-Concatenation in Queries |
 | Brute-Force / Credential Stuffing | Account-Sperre nach 5 Fehlversuchen | `ApplicationUser.failedLoginAttempts` (User Story 2.1.2) |
 | Token-Fälschung | HMAC-signierte JWTs | `JwtTokenizer` mit `SecurityProperties.getJwtSecret()` |
+| DB-Leak ohne Applikationszugang | Pepper verhindert Offline-Cracking ohne Kenntnis des Applikationsgeheimnisses | `pepper` wird vor dem Hashing vorangestellt; nie in der DB gespeichert |
 
-### 7.4 Spring Security Konfiguration
+### 7.4 Passwort-Sicherheit: Salt & Pepper
+
+Passwörter werden nie im Klartext gespeichert. Das Zusammenspiel von Salt und Pepper schützt gegen zwei unterschiedliche Angriffsvektoren:
+
+| Mechanismus | Wo gespeichert | Schutz gegen |
+|-------------|---------------|--------------|
+| **Salt** (automatisch via BCrypt) | Im Hash-String selbst (`$2a$10$<22-Zeichen-Salt>...`) | Rainbow-Table-Angriffe; zwei identische Passwörter erzeugen verschiedene Hashes |
+| **Pepper** (`security.pepper` in `application.yml`) | Nur in der Applikationskonfiguration, nie in der DB | Offline-Cracking nach DB-Leak — ohne den Pepper-Wert ist ein gestohlener Hash wertlos |
+
+**Ablauf beim Hashing:**
+```
+gespeicherter Hash = BCrypt.encode(pepper + rawPassword)
+                                    ↑                ↑
+                          aus application.yml    vom Client
+```
+
+**Ablauf beim Vergleich (Login):**
+```
+BCrypt.matches(pepper + eingegebenes Passwort, gespeicherter Hash)
+```
+
+> In Produktion sollte der Pepper als Umgebungsvariable (`${PEPPER_SECRET}`) gesetzt werden, damit er nicht im VCS liegt.
+
+### 7.6 Spring Security Konfiguration
 
 Die Security-Konfiguration ist in `SecurityConfig` (`@Configuration`, `@EnableWebSecurity`) zentralisiert:
 - `JwtAuthorizationFilter` wird in die Spring Security Filter Chain eingehängt
@@ -646,13 +682,13 @@ Die Security-Konfiguration ist in `SecurityConfig` (`@Configuration`, `@EnableWe
 
 ---
 
-### 7.5 Account-Lifecycle
+### 7.7 Account-Lifecycle
 
 #### Selbstregistrierung
 
 1. Client sendet `POST /api/v1/users/register` mit `UserRegistrationDto` (Name, E-Mail, Passwort, Adresse, Geburtsdatum)
 2. Service prüft: E-Mail bereits vergeben? → `ConflictException` (409)
-3. Passwort wird via `PasswordEncoder.encode()` gehasht und nie im Klartext gespeichert
+3. Passwort wird als `pepper + password` via `PasswordEncoder.encode()` gehasht und nie im Klartext gespeichert. BCrypt generiert dabei automatisch einen zufälligen Salt pro Passwort (eingebettet im Hash-String). Der Pepper ist ein applikationsseitiges Geheimnis (`security.pepper` in `application.yml`), das nie in der DB landet.
 4. `ApplicationUser` wird mit `admin = false`, `locked = false`, `deleted = false`, `failedLoginAttempts = 0` angelegt
 5. Antwort: `UserDetailDto` (201 Created) — kein Passwort-Hash in der Antwort
 

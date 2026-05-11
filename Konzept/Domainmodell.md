@@ -10,7 +10,7 @@
             -String password
             -String firstName
             -String lastName
-            -String street
+            -String streetAddress
             -String city
             -String postalCode
             -Date birthdate
