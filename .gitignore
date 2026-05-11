@@ -1,0 +1,5 @@
+docs/
+tickets/
+private/
+.DS_Store
+.idea/
