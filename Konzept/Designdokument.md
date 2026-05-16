@@ -104,32 +104,25 @@ classDiagram
     class UserEndpoint {
         <<RestController>>
         -UserService userService
-        +register(dto) UserDetailDto
+        +register(dto) 201
+        +verifyEmail(token)
         +getMe() UserDetailDto
         +updateMe(dto) UserDetailDto
         +deleteMe()
         +getAll() List
-        +getById(id) UserDetailDto
-        +update(id, dto) UserDetailDto
-        +lock(id, locked)
-        +delete(id)
+        +getById(uuid) UserDetailDto
+        +update(uuid, dto) UserDetailDto
+        +lock(uuid, locked)
+        +delete(uuid)
         +requestPasswordReset(dto)
         +confirmPasswordReset(dto)
     }
 
-    %% ── AuthService: Spring Security + Login ───────────────────────────────
+    %% ── AuthService: Login ─────────────────────────────────────────────────
     class AuthService {
         <<interface>>
-        +loadUserByUsername(email) UserDetails
         +findApplicationUserByEmail(email) ApplicationUser
         +login(dto) String
-        %% findApplicationUserByEmail gibt absichtlich eine Entity zurück
-        %% (Spring Security intern — Ausnahme von der DTO-Konvention)
-    }
-
-    class UserDetailsService {
-        <<interface>>
-        +loadUserByUsername(username) UserDetails
     }
 
     class AuthServiceImpl {
@@ -137,7 +130,6 @@ classDiagram
         -UserRepository userRepository
         -PasswordEncoder passwordEncoder
         -JwtTokenizer jwtTokenizer
-        +loadUserByUsername(email) UserDetails
         +findApplicationUserByEmail(email) ApplicationUser
         +login(dto) String
     }
@@ -145,15 +137,16 @@ classDiagram
     %% ── UserService: Benutzerverwaltung ────────────────────────────────────
     class UserService {
         <<interface>>
-        +register(dto) UserDetailDto
+        +registerCustomer(dto)
+        +verifyEmail(token)
         +getMe(email) UserDetailDto
         +updateMe(email, dto) UserDetailDto
         +deleteMe(email)
         +findAll() List
-        +findById(id) UserDetailDto
-        +update(id, dto) UserDetailDto
-        +lock(id, locked)
-        +delete(id)
+        +findById(uuid) UserDetailDto
+        +update(uuid, dto) UserDetailDto
+        +lock(uuid, locked)
+        +delete(uuid)
         +requestPasswordReset(dto)
         +confirmPasswordReset(dto)
     }
@@ -161,25 +154,51 @@ classDiagram
     class UserServiceImpl {
         <<Service>>
         -UserRepository userRepository
-        -PasswordResetTokenRepository tokenRepository
+        -CountryRepository countryRepository
+        -EmailVerificationTokenRepository evTokenRepository
+        -PasswordResetTokenRepository pwTokenRepository
         -PasswordEncoder passwordEncoder
-        +register(dto) UserDetailDto
+        -EmailService emailService
+        -UserMapper userMapper
+        +registerCustomer(dto)
+        +verifyEmail(token)
         +getMe(email) UserDetailDto
         +updateMe(email, dto) UserDetailDto
         +deleteMe(email)
         +findAll() List
-        +findById(id) UserDetailDto
-        +update(id, dto) UserDetailDto
-        +lock(id, locked)
-        +delete(id)
+        +findById(uuid) UserDetailDto
+        +update(uuid, dto) UserDetailDto
+        +lock(uuid, locked)
+        +delete(uuid)
         +requestPasswordReset(dto)
         +confirmPasswordReset(dto)
+    }
+
+    %% ── EmailService ───────────────────────────────────────────────────────
+    class EmailService {
+        <<interface>>
+        +sendVerificationEmail(to, link)
+    }
+
+    class EmailServiceImpl {
+        <<Service>>
+        -JavaMailSender mailSender
+        +sendVerificationEmail(to, link)
     }
 
     %% ── Persistence ────────────────────────────────────────────────────────
     class UserRepository {
         <<Repository>>
-        +findUserByEmail(email) ApplicationUser
+        +findByEmail(email) Optional
+        +findByUuid(uuid) Optional
+        +findAllByIsLockedTrue() List
+    }
+
+    class EmailVerificationTokenRepository {
+        <<Repository>>
+        +findByToken(token) Optional
+        +findByUser(user) Optional
+        +deleteByUser(user)
     }
 
     class PasswordResetTokenRepository {
@@ -188,17 +207,45 @@ classDiagram
         +deleteByUser(user)
     }
 
+    class CountryRepository {
+        <<Repository>>
+        +findByIsoCode(isoCode) Optional
+    }
+
+    %% ── Entities ───────────────────────────────────────────────────────────
     class ApplicationUser {
         <<Entity>>
         -Long id
         -UUID uuid
         -String email
         -String password
-        -Boolean admin
-        -Boolean locked
+        -String firstName
+        -String lastName
+        -String streetAddress
+        -String city
+        -String postalCode
+        -String phone
+        -LocalDate birthdate
+        -UserRole role
+        -Boolean isLocked
+        -Boolean isVerified
         -Boolean deleted
         -int failedLoginAttempts
         -int rewardPoints
+    }
+
+    class UserRole {
+        <<enumeration>>
+        ROLE_USER
+        ROLE_ADMIN
+    }
+
+    class EmailVerificationToken {
+        <<Entity>>
+        -Long id
+        -String token
+        -LocalDateTime expiresAt
+        -ApplicationUser user
     }
 
     class PasswordResetToken {
@@ -208,6 +255,13 @@ classDiagram
         -String token
         -LocalDateTime expiresAt
         -Boolean used
+    }
+
+    class Country {
+        <<Entity>>
+        -Long id
+        -String name
+        -String isoCode
     }
 
     %% ── DTOs ────────────────────────────────────────────────────────────────
@@ -224,7 +278,9 @@ classDiagram
         -String streetAddress
         -String city
         -String postalCode
-        -Date birthdate
+        -String countryIsoCode
+        -LocalDate birthdate
+        -String phone
     }
 
     class UserDetailDto {
@@ -232,8 +288,25 @@ classDiagram
         -String firstName
         -String lastName
         -String email
-        -Boolean admin
-        -Boolean locked
+        -String role
+        -String streetAddress
+        -String city
+        -String postalCode
+        -CountryDto country
+        -LocalDate birthdate
+        -String phone
+    }
+
+    class CountryDto {
+        -String isoCode
+        -String name
+    }
+
+    %% ── Mapper ──────────────────────────────────────────────────────────────
+    class UserMapper {
+        <<Mapper>>
+        +toDto(ApplicationUser) UserDetailDto
+        +toEntity(UserRegistrationDto) ApplicationUser
     }
 
     %% ── Security Infrastructure ─────────────────────────────────────────────
@@ -272,7 +345,6 @@ classDiagram
     UserEndpoint ..> UserRegistrationDto : empfängt
     UserEndpoint ..> UserDetailDto : gibt zurück
 
-    AuthService --|> UserDetailsService : erweitert
     AuthService <|.. AuthServiceImpl : implementiert
     AuthServiceImpl --> UserRepository : nutzt
     AuthServiceImpl --> PasswordEncoder : nutzt
@@ -280,12 +352,26 @@ classDiagram
 
     UserService <|.. UserServiceImpl : implementiert
     UserServiceImpl --> UserRepository : nutzt
+    UserServiceImpl --> CountryRepository : nutzt
+    UserServiceImpl --> EmailVerificationTokenRepository : nutzt
     UserServiceImpl --> PasswordResetTokenRepository : nutzt
     UserServiceImpl --> PasswordEncoder : nutzt
+    UserServiceImpl --> EmailService : nutzt
+    UserServiceImpl --> UserMapper : nutzt
+
+    EmailService <|.. EmailServiceImpl : implementiert
 
     UserRepository --> ApplicationUser : verwaltet
+    EmailVerificationTokenRepository --> EmailVerificationToken : verwaltet
     PasswordResetTokenRepository --> PasswordResetToken : verwaltet
+    CountryRepository --> Country : verwaltet
+    EmailVerificationToken --> ApplicationUser : gehört zu
     PasswordResetToken --> ApplicationUser : gehört zu
+    ApplicationUser --> Country : wohnt in
+    ApplicationUser --> UserRole : hat
+
+    UserMapper ..> ApplicationUser
+    UserMapper ..> UserDetailDto
 
     JwtTokenizer --> SecurityProperties : nutzt
     JwtAuthorizationFilter --> SecurityProperties : nutzt
@@ -331,7 +417,8 @@ Jedes Modul trennt die Serviceschicht in ein Interface (Vertrag) und eine Implem
 
 **Einsatz:**
 - `MessageService` (Interface) → `SimpleMessageService` (`@Service`)
-- `UserService` (Interface, erweitert `UserDetailsService`) → `CustomUserDetailService` (`@Service`)
+- `AuthService` (Interface) → `AuthServiceImpl` (`@Service`)
+- `UserService` (Interface) → `UserServiceImpl` (`@Service`)
 
 **Vorteil:** Services können im Test durch Mocks ersetzt werden (Mockito). Die Implementierung kann ausgetauscht werden, ohne den Aufrufer zu ändern.
 
@@ -616,10 +703,10 @@ logging:
 Die Authentifizierung erfolgt zustandslos über **JSON Web Tokens (JWT)**:
 
 1. Der Client sendet `POST /api/v1/authentication` mit E-Mail und Passwort
-2. `AuthServiceImpl.loadUserByUsername()` lädt den User aus der DB — wirft `LockedException` wenn `locked = true`, `DisabledException` wenn `deleted = true`
-3. `AuthServiceImpl.login()` verifiziert das Passwort via BCrypt
+2. `AuthServiceImpl.login()` lädt den User aus der DB via `findApplicationUserByEmail()`
+3. Login-Prüfungen: E-Mail-Verifikation (`isVerified`), Account-Sperre (`isLocked`), Passwort via BCrypt + Pepper
 4. Bei **falschem Passwort**: `failedLoginAttempts` wird inkrementiert; ab 5 Fehlversuchen wird `locked = true` gesetzt → 401-Fehler
-5. Bei **richtigem Passwort**: `failedLoginAttempts` wird auf 0 zurückgesetzt; `JwtTokenizer.getAuthToken()` gibt signierten JWT zurück
+5. Bei **richtigem Passwort**: `failedLoginAttempts` wird auf 0 zurückgesetzt; Rollen werden direkt aus `applicationUser.getRole()` abgeleitet; `JwtTokenizer.getAuthToken()` gibt signierten JWT zurück
 6. Der Client sendet den Token bei jedem Folge-Request im Header: `Authorization: Bearer <token>`
 7. `JwtAuthorizationFilter` validiert die Signatur und setzt den Spring Security Context
 
@@ -700,14 +787,14 @@ Die Security-Konfiguration ist in `SecurityConfig` (`@Configuration`, `@EnableWe
 | Admin-seitige Sperre | `locked = true` | Ja — Admin setzt `locked = false` |
 | Erfolgreicher Login | `failedLoginAttempts = 0` | — |
 
-`loadUserByUsername()` prüft `locked` und gibt `UserDetails.isAccountNonLocked() = false` zurück, wenn gesperrt → Spring Security wirft `LockedException` → GlobalExceptionHandler mappt auf 401.
+`login()` prüft `applicationUser.getIsLocked()` direkt und wirft `LockedException` → GlobalExceptionHandler mappt auf 401.
 
 #### Account-Löschung (Soft Delete)
 
 1. Admin sendet `DELETE /api/v1/users/{id}`
 2. Service anonymisiert alle personenbezogenen Felder (Name, E-Mail, Passwort, Adresse) und setzt `deleted = true`
 3. Kein Hard Delete — Orders, Reservierungen und Rechnungen bleiben erhalten (gesetzliche Aufbewahrungspflicht)
-4. Bei nächstem Login: `loadUserByUsername()` gibt `UserDetails.isEnabled() = false` zurück → `DisabledException` → 401
+4. Bei nächstem Login: `login()` prüft `applicationUser.getIsVerified()` — da E-Mail anonymisiert, schlägt Login fehl → 401
 
 #### Passwort-Reset-Flow
 

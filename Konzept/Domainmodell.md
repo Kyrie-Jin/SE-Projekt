@@ -13,12 +13,20 @@
             -String streetAddress
             -String city
             -String postalCode
-            -Date birthdate
-            -Boolean admin
-            -Boolean locked
+            -String phone
+            -LocalDate birthdate
+            -UserRole role
+            -Boolean isLocked
+            -Boolean isVerified
             -Boolean deleted
             -int failedLoginAttempts
             -int rewardPoints
+        }
+
+        class UserRole {
+            <<enumeration>>
+            ROLE_USER
+            ROLE_ADMIN
         }
 
         class PasswordResetToken {
@@ -28,6 +36,13 @@
             -String token
             -LocalDateTime expiresAt
             -Boolean used
+        }
+
+        class EmailVerificationToken {
+            <<Entity>>
+            -Long id
+            -String token
+            -LocalDateTime expiresAt
         }
 
         class Message {
@@ -66,11 +81,14 @@
         }
 
         class EventCategory {
-            <<Entity>>
-            -Long id
-            -UUID uuid
-            -String name
-            -String description
+            <<enumeration>>
+            CONCERTS
+            THEATRE
+            FESTIVAL
+            OPERA
+            SHOWS
+            SPORTS
+            GENERAL
         }
 
         class Event {
@@ -80,6 +98,10 @@
             -String title
             -String description
             -int durationMinutes
+            -EventCategory category
+            -String coverImage
+            -Integer soldTickets
+            -Integer capacity
         }
 
         class Performance {
@@ -233,10 +255,10 @@
         ApplicationUser "n" --> "1" Country : wohnt in
         Venue "n" --> "1" Country : liegt in
         ApplicationUser "1" --> "n" PasswordResetToken : hat
+        EmailVerificationToken "1" --> "1" ApplicationUser : gehört zu
         ApplicationUser "1" --> "n" MessageRead : hat
         MessageRead "n" --> "1" Message : für
         Message "1" --> "1..*" MessageImage : hat
-        Event "n" --> "1" EventCategory : hat
         Event "n" --> "m" Artist : wird aufgeführt von
         Event "1" --> "n" Performance : hat
         Performance "n" --> "1" Hall : findet statt in

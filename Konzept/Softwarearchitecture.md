@@ -111,6 +111,9 @@ graph TB
             US["UserService"]
             NS["MessageService"]
             ES["EventService"]
+            ADMINS["AdminService"]
+            CS["CountryService"]
+            EMS["EmailService"]
             TS["TicketService"]
             OS["OrderService"]
             BS["BillingService"]
@@ -123,6 +126,8 @@ graph TB
             NR["MessageRepository"]
             MRR["MessageReadRepository"]
             ER["EventRepository"]
+            CR["CountryRepository"]
+            EVTR["EmailVerificationTokenRepository"]
             AR["ArtistRepository"]
             VR["VenueRepository"]
             PR["PerformanceRepository"]
@@ -145,17 +150,19 @@ graph TB
     FE -- "HTTP/JSON + JWT" --> TC
     TC --> JWT
     JWT --> EP
-    EP --> AS & US & NS & ES & TS & OS & BS & MS & RS
-    AS & US --> UR
-    US --> PTR
+    EP --> AS & US & NS & ES & ADMINS & CS & EMS & TS & OS & BS & MS & RS
+    AS --> UR
+    US --> UR & CR & EVTR & EMS
     NS --> NR & MRR
-    ES --> ER & AR & VR & PR & TR
+    ES --> ER
+    ADMINS --> UR
+    CS --> CR
     TS --> TR & PR
     OS --> OR & TR & UR
     BS --> IR & OR
     MS --> MR
     RS --> MR & UR
-    UR & NR & MRR & ER & AR & VR & PR & TR & OR & IR & MR & PTR -- "JDBC" --> H2
+    UR & NR & MRR & ER & CR & EVTR & AR & VR & PR & TR & OR & IR & MR & PTR -- "JDBC" --> H2
 ```
 
 ### 3.2 Verteilungsdiagramm
